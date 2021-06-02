@@ -1,0 +1,44 @@
+.toolbar {
+	box-shadow: 0px 0px 3px #00000029;
+	border-radius: 5px;
+	background-color: #01579b;
+	color: #FFF;
+	width: auto;
+	z-index: 2;
+	max-width: 1920px;
+	margin: 16px 32px;
+	transition: 0.5s;
+
+  a {
+    font-size: 16px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    border-radius: 0;
+
+		&.activated {
+			color: #FFFFFF;
+			border-bottom: 3px solid #FFFFFF;
+		}
+
+    @media (max-width: 840px) {
+      margin-right: 0px;
+    }
+  }
+  
+  .img-logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 32px;
+  }
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+@keyframes fadeIn { 
+	0% {opacity: 0;} // CSS properties at start
+	100% {opacity: 1;} // CSS properties at end
+}

@@ -1,3 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+$my-app-primary: mat-palette($mat-light-blue, 900);
+$my-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+
+@include angular-material-theme($my-app-theme);
+
+body { margin: 0; background-color: #eef5f9; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.centered-text {
+	justify-content: center;
+}
+
+.page-header {
+	padding: 0 0 12px!important;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid rgba(202,206,211,.4)!important;
+
+	h2 {
+		font-size: 24px!important;
+    margin-bottom: 8px!important;
+	}
+
+	h3 {
+		color: #707070!important; 
+		margin: 0;
+	}
+}
+
+.no-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+	background: #fff;
+
+  p {
+    font-size: 16px;
+    margin: 0;
+    color: #caced3;
+
+    // @media (max-width: 768px) {
+    //   width: 300px;
+    //   position: fixed;
+    //   top: 50%;
+    //   left: calc(50% - 150px);
+    //   text-align: center;
+    // }
+  }
+}
