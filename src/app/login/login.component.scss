@@ -1,0 +1,46 @@
+.main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #FFF;
+
+  img {
+    width: 375px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 54%;
+    min-width: 400px;
+    padding-top: 32px;
+    margin: 0;
+
+    form button {
+      font-weight: normal;
+			height: 48px;
+    }
+  }
+
+  .full-width {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .error, strong {
+    text-align: center;
+    color: #f44336;
+  }
+}
+
+::ng-deep .login-button .mat-progress-spinner circle, .signup-loading ::ng-deep .mat-spinner.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #FFF;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
