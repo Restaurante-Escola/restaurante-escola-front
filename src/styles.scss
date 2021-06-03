@@ -13,6 +13,10 @@ body { margin: 0; background-color: #eef5f9; font-family: Roboto, "Helvetica Neu
 	justify-content: center;
 }
 
+.delete-button mat-dialog-container{
+  padding: 12px 24px;
+}
+
 .page-header {
 	padding: 0 0 12px!important;
 	display: flex;

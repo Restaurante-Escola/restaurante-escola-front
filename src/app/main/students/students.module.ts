@@ -12,6 +12,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { EditCreateStudentComponent } from './edit-create-student/edit-create-student.component'
 import { MatDialogModule } from "@angular/material/dialog";
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
   {
@@ -33,7 +37,12 @@ const routes: Routes = [
 		MatPaginatorModule,
 		MatSnackBarModule,
 		MatProgressSpinnerModule,
-		MatDialogModule
+		MatDialogModule,
+		ReactiveFormsModule,
+		FormsModule,
+		MatSelectModule,
+		MatCheckboxModule,
+		MatInputModule
   ]
 })
 export class StudentsModule { }

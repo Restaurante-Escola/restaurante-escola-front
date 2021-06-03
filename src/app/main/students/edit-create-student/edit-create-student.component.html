@@ -1,1 +1,343 @@
-<p>edit-create-student works!</p>
+<mat-dialog-content *ngIf='!loading'>
+  <form [formGroup]="studentForm">
+    <div class='info-section'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <span class='section-title'>
+            Dados Pessoais
+          </span>
+        </div>
+
+        <div class='col-md-12'>
+          <mat-form-field class="field">
+            <mat-label>Nome completo</mat-label>
+            <input matInput formControlName="nome">
+            <mat-error *ngIf="studentForm.get('nome')?.hasError('required')">
+              Nome completo é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Nome Social</mat-label>
+            <input matInput formControlName="nomeSocial">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Idade</mat-label>
+            <input matInput formControlName="idade">
+						<span matSuffix>anos</span>
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Estado civil</mat-label>
+            <input matInput formControlName="estadoCivil">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput formControlName="dataNascimento" mask="00/00/0000" [dropSpecialCharacters]="false">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>RG</mat-label>
+            <input matInput formControlName="rg" mask="00.000.000-0">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" mask="000.000.000-00">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Tel. celular</mat-label>
+            <input matInput formControlName="telefoneCelular" mask="(00) 00000-0000">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>WhatsApp</mat-label>
+            <input matInput formControlName="numeroWhatsapp" mask="(00) 00000-0000">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Tel. Recado</mat-label>
+            <input matInput formControlName="telefoneRecado" mask="(00) 00000-0000">
+          </mat-form-field>
+        </div>
+
+				<div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Nome da pessoa</mat-label>
+            <input matInput formControlName="nomePessoaTelefoneRecado">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-12'>
+          <mat-form-field class="field">
+            <mat-label>Endereço</mat-label>
+            <input matInput formControlName="endereco">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-12'>
+          <mat-form-field class="field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-12'>
+          <mat-form-field class="field">
+            <mat-label>Nome do principal responsável / cuidador:</mat-label>
+            <input matInput formControlName="nomeResponsavel">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class='info-section'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <span class='section-title'>
+            Dados escolares
+          </span>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Escolaridade</mat-label>
+						<mat-select formControlName="escolaridade">
+							<mat-option *ngFor="let escolaridade of escolaridades" [value]="escolaridade">
+								{{escolaridade}}
+							</mat-option>
+						</mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Nome da escola</mat-label>
+            <input matInput formControlName="escola">
+          </mat-form-field>
+        </div>
+
+				<div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Escolaridade Grau</mat-label>
+						<mat-select formControlName="escolaridadeGrau">
+							<mat-option *ngFor="let grau of escolaridadeGraus" [value]="grau">
+								{{grau}}
+							</mat-option>
+						</mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6' *ngIf='studentForm.get("escolaridadeGrau")?.value == "Completo"'>
+          <mat-form-field class="field">
+            <mat-label>Ano da formação</mat-label>
+            <input matInput formControlName="anoFormacao">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+		<div class='info-section'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <span class='section-title'>
+            Dados de Serviço
+          </span>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Tamanho da camisa</mat-label>
+						<input matInput formControlName="camiseta">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Nº Sapato</mat-label>
+            <input matInput formControlName="sapato">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Serviço de Atendimento</mat-label>
+						<mat-select formControlName="servicoAtendimento">
+							<mat-option *ngFor="let servico of servicosAtendimento" [value]="servico">
+								{{servico}}
+							</mat-option>
+						</mat-select>
+          </mat-form-field>
+        </div>
+
+				<div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Unidade</mat-label>
+            <input matInput formControlName="unidade">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+		<div class='info-section'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <span class='section-title'>
+            Dados do(a) Técnico(a)
+          </span>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Nome do(a) técnico(a)</mat-label>
+            <input matInput formControlName="tecnico">
+          </mat-form-field>
+        </div>
+
+        <div class='col-md-6'>
+          <mat-form-field class="field">
+            <mat-label>Tel. contato</mat-label>
+            <input matInput formControlName="telefoneTecnico" mask="(00) 00000-0000">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+		<div class='info-section'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <span class='section-title'>
+            Dados de comorbidade
+          </span>
+        </div>
+
+        <div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="alergia">
+						Apresenta algum tipo de alergia?
+					</mat-checkbox>
+        </div>
+
+        <div class='col-md-6' *ngIf='studentForm.get("alergia")?.value'>
+					<mat-label>Indique alergia do que</mat-label>
+					<input matInput formControlName="telefoneTecnico">
+					<mat-checkbox class="field" formControlName="alergiaRemedio">
+						Remédio
+					</mat-checkbox>
+					<mat-checkbox class="field" formControlName="alergiaAlimento">
+						Alimento
+					</mat-checkbox>
+					<mat-checkbox class="field" formControlName="alergiaOutros">
+						Outros
+					</mat-checkbox>
+				</div>
+
+        <div class='col-md-12' *ngIf='studentForm.get("alergia")?.value'>
+          <mat-form-field class="field">
+            <mat-label>Especifique</mat-label>
+            <input matInput formControlName="especificacaoAlergia">
+          </mat-form-field>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="hipertensao">
+						Tem hipertensão (pressão alta)?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="hipotensao">
+						Tem hipotensão (pressão baixa)?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="epilepsia">
+						Tem epilepsia (convulsão)?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="diabetes">
+						Tem diabetes?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="problemaRenal">
+						Tem problema renal?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="problemaOcular">
+						Tem problema ocular?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="problemaRespiratorio">
+						Tem problema respiratório?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="fumante">
+						Fuma?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-6'>
+					<mat-checkbox class="field" formControlName="medicamentosUsoContinuo">
+						Faz uso de medicamento de uso continuo?
+					</mat-checkbox>
+        </div>
+
+				<div class='col-md-12'>
+          <mat-form-field class="field">
+						<mat-label>Qual(ais)?</mat-label>
+            <input matInput formControlName="medicamentosUsoContinuo">
+          </mat-form-field>
+        </div>
+
+				<div class='col-md-12'>
+          <mat-form-field class="field">
+						<mat-label>Outras observações</mat-label>
+            <input matInput formControlName="observacao">
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+  <div class='save-buttons dialog-footer'>
+    <div style='display: flex;'>
+      <button mat-stroked-button (click)="cancel()">Cancelar</button>
+      <button mat-flat-button color="primary" (click)="save()" *ngIf='!loadingSpinner'>{{isEditing ? 'Atualizar' : 'Criar'}}</button>
+      <button mat-flat-button color='primary' class='button-loading-spinner' *ngIf='loadingSpinner'>
+        <mat-spinner diameter='25'></mat-spinner>
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

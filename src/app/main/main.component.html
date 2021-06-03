@@ -3,13 +3,12 @@
   <a mat-button [routerLink]="['/alunos']" routerLinkActive #students="routerLinkActive" [ngClass]='{"activated" : students.isActive}' [routerLinkActiveOptions]="{ exact: true }">Alunos</a>
   <a mat-button [routerLink]="['/turmas']" routerLinkActive #classes="routerLinkActive" [ngClass]='{"activated" : classes.isActive}'>Turmas</a>
   <a mat-button [routerLink]="['/configurações']" routerLinkActive #config="routerLinkActive" [ngClass]='{"activated" : config.isActive}'>Configurações</a>
+  <a mat-button (click)='logout()'>Sair</a>
   <span class="example-spacer"></span>
   <a target="_blank" class="toolbar-banner" href="https://unisantos.br">
     <img src='../../assets/unisantos-icon.png' style='height: 54px;'>
   </a>
 </mat-toolbar>
-
-<!-- (activate)="onActivate($event)" -->
 
 <div style='margin: 0 32px;'>
 	<router-outlet></router-outlet>
