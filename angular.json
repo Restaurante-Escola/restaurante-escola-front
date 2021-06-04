@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "school-restaurant"
+  "defaultProject": "school-restaurant",
+  "cli": {
+    "analytics": false
+  }
 }
