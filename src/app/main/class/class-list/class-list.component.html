@@ -1,0 +1,77 @@
+<div class='page-header'>
+	<div>
+		<h2>Alunos</h2>
+		<h3>Listagem de todos alunos do curso</h3>
+	</div>
+	<div>
+		<button mat-flat-button color="primary" class="header-button" (click)='createStudent()'>Adicionar novo aluno</button>
+	</div>
+</div>
+
+<div class="example-container mat-elevation-z8" style='margin: 32px 0; border-radius: 15px;'>
+	<div class="example-loading-shade" *ngIf="loading">
+		<mat-spinner></mat-spinner>
+	</div>
+
+	<div class="example-table-container" >
+		<mat-table [dataSource]="dataSource" class="table-teams" [hidden]="dataSource.filteredData?.length == 0">
+
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+				<mat-cell *matCellDef="let student">
+					{{student.nome ? student.nome : '-'}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="cpf">
+				<mat-header-cell *matHeaderCellDef class='centered-text'> CPF </mat-header-cell>
+				<mat-cell *matCellDef="let student" class='centered-text'>
+					{{student.cpf | mask: '000.000.000-00'}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="years">
+				<mat-header-cell *matHeaderCellDef class='centered-text'> Idade </mat-header-cell>
+				<mat-cell *matCellDef="let student" class='centered-text'>
+					{{student.idade ? student.idade : '-'}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="class">
+				<mat-header-cell *matHeaderCellDef class='centered-text'> Turma </mat-header-cell>
+				<mat-cell *matCellDef="let student" class='centered-text'>
+					{{student.turma ? student.turma : '-'}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="email">
+				<mat-header-cell *matHeaderCellDef class='centered-text'> Email </mat-header-cell>
+				<mat-cell *matCellDef="let student" class='centered-text'>
+					{{student.email ? student.email : '-'}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="cellphone">
+				<mat-header-cell *matHeaderCellDef class='centered-text'> Celular </mat-header-cell>
+				<mat-cell *matCellDef="let student" class='centered-text'>
+					{{student.telefoneCelular ? (student.telefoneCelular | mask: '(00) 00000-0000') : '-'}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="icon">
+				<mat-header-cell *matHeaderCellDef class='centered-text no-padding-right'> Ações </mat-header-cell>
+				<mat-cell *matCellDef="let student" class='centered-text no-padding-right'>
+					<button mat-stroked-button (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
+					<button mat-stroked-button (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
+				</mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+		<div *ngIf="dataSource.filteredData?.length === 0" class='no-content'>
+			<p>No matches found.</p>
+		</div>
+	</div>
+</div>

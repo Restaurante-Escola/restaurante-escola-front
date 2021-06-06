@@ -12,6 +12,11 @@ const routes: Routes = [
 				loadChildren: () => import('./main/students/students.module').then(m => m.StudentsModule),
 				canActivate: [AuthenticationGuard] 
 			},
+			{ 
+				path: "turmas", 
+				loadChildren: () => import('./main/class/class.module').then(m => m.ClassModule),
+				canActivate: [AuthenticationGuard] 
+			},
 		] 
 	},
 	{ path: "login", component: LoginComponent }
