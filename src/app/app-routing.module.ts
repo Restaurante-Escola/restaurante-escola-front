@@ -12,6 +12,11 @@ const routes: Routes = [
 				loadChildren: () => import('./main/students/students.module').then(m => m.StudentsModule),
 				canActivate: [AuthenticationGuard] 
 			},
+			{ 
+				path: "frequencia", 
+				loadChildren: () => import('./main/class-frequency/class-frequency.module').then(m => m.ClassFrequencyModule),
+				canActivate: [AuthenticationGuard] 
+			},
 		] 
 	},
 	{ path: "login", component: LoginComponent }
