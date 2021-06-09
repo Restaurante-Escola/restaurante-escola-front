@@ -1,0 +1,42 @@
+.info-section {
+  margin: 8px 0;
+
+  .section-title {
+    font-size: 20px;
+    width: 100%;
+    display: block;
+    color: #061347;
+    margin: 8px 0px;
+  }
+
+  .field {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+.col-md-8, .col-md-4, .col-md-6 {
+  margin: 8px 0;
+}
+
+strong {
+  color: #f44336;
+}
+
+.save-buttons {
+  width: 100%; 
+  display: flex; 
+  justify-content: flex-end;
+}
+
+.button-loading-spinner {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+}
+
+.button-loading-spinner ::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #FFF;
+}
