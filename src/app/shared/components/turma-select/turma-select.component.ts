@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { TurmaSelectService } from '../../services/turma-select.service';
 
 @Component({
@@ -11,8 +11,14 @@ export class TurmaSelectComponent implements OnInit {
 
   @Input() label: string = "Escolha uma turma"
   @Input() errorMessage: string = "Campo obrigatório"
-  @Input() formControl: FormControl = new FormControl()
-  @Input() turmas: any
+  @Input() parentForm!: FormGroup
+  @Input() controlName: string = ''
+
+  turmas: any
+
+  get form() {
+    return this.parentForm.get(this.controlName) as FormControl
+  }
 
   constructor(
     private turmaSelectService: TurmaSelectService
@@ -26,13 +32,11 @@ export class TurmaSelectComponent implements OnInit {
     this.turmaSelectService.getTurmasByName().subscribe(
       (response : any) => {
         this.turmas = this.handleTurmas(response)
-        console.log(this.turmas);
       }
     )
   }
 
   handleTurmas(turmas: []) {
-    console.log(turmas);
     return turmas.map((turma: any) => ({
       name: `Turma ${turma.codigo} - ${turma.inicioTurma.split('-')[0]}`,
       ...turma,
