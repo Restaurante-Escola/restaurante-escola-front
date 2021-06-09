@@ -31,7 +31,7 @@ export class StudentsListComponent implements OnInit {
 		this.students = await this.studentsService.getStudents();
 		console.log("x", this.students);
 		this.dataSource = new MatTableDataSource(this.students);
-		this.displayedColumns = ['name', 'cpf', 'years', 'class', 'email', 'cellphone', 'icon'];
+		this.displayedColumns = ['icon', 'name', 'cpf', 'years', 'class', 'email', 'cellphone'];
 		this.loading = false;
   }
 

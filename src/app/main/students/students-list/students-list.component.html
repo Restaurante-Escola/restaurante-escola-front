@@ -16,6 +16,14 @@
 	<div class="example-table-container" >
 		<mat-table [dataSource]="dataSource" class="table-teams" [hidden]="dataSource.filteredData?.length == 0">
 
+			<ng-container matColumnDef="icon">
+				<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+				<mat-cell *matCellDef="let student">
+					<button mat-stroked-button (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
+					<button mat-stroked-button (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
+				</mat-cell>
+			</ng-container>
+
 			<ng-container matColumnDef="name">
 				<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
 				<mat-cell *matCellDef="let student">
@@ -52,17 +60,9 @@
 			</ng-container>
 
 			<ng-container matColumnDef="cellphone">
-				<mat-header-cell *matHeaderCellDef class='centered-text'> Celular </mat-header-cell>
-				<mat-cell *matCellDef="let student" class='centered-text'>
-					{{student.telefoneCelular ? (student.telefoneCelular | mask: '(00) 00000-0000') : '-'}}
-				</mat-cell>
-			</ng-container>
-
-			<ng-container matColumnDef="icon">
-				<mat-header-cell *matHeaderCellDef class='centered-text no-padding-right'> Ações </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef class='centered-text no-padding-right'> Celular </mat-header-cell>
 				<mat-cell *matCellDef="let student" class='centered-text no-padding-right'>
-					<button mat-stroked-button (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
-					<button mat-stroked-button (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
+					{{student.telefoneCelular ? (student.telefoneCelular | mask: '(00) 00000-0000') : '-'}}
 				</mat-cell>
 			</ng-container>
 

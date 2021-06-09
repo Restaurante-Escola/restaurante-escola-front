@@ -30,7 +30,7 @@ export class ClassListComponent implements OnInit {
 		this.loading = true;
 		this.class = await this.classService.getClasses();
 		this.dataSource = new MatTableDataSource(this.class);
-		this.displayedColumns = ['name', 'date', 'numberOfStudents', 'icon'];
+		this.displayedColumns = ['icon', 'name', 'date', 'numberOfStudents'];
 		this.loading = false;
   }
 

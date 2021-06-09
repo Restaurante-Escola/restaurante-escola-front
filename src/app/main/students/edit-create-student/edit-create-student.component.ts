@@ -78,7 +78,7 @@ export class EditCreateStudentComponent implements OnInit {
 			fumante: new FormControl(false),
 			medicamentosUsoContinuo: new FormControl(''),
 			observacao: new FormControl(''),
-			matricula: new FormControl(99999)
+			matricula: new FormControl(123458886708)
     });
 
 		if(this.student?.nome) {
