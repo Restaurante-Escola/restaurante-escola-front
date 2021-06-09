@@ -11,7 +11,12 @@ export class ClassFrequencyService {
     private httpClient: HttpClient
   ) { }
  
-  getAlunosByTurmaCodigo(codigoTurma: number) {
-    return this.httpClient.get(`${environment.api_url}/turmas/alunos/` + codigoTurma)
+  getAlunosByTurmaNumero(numeroTurma: number) {
+    return this.httpClient.get(`${environment.api_url}/turmas/alunos/` + numeroTurma)
+  }
+
+  getFrequenciaByTurmaDate(numeroTurma: number, selectedDate: string) {
+    const query = JSON.stringify({ numero: numeroTurma, data: selectedDate })
+    return this.httpClient.get(`${environment.api_url}/frequencias/data?` + query)
   }
 }

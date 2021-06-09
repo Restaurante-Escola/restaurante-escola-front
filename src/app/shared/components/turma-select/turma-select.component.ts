@@ -38,7 +38,7 @@ export class TurmaSelectComponent implements OnInit {
 
   handleTurmas(turmas: []) {
     return turmas.map((turma: any) => ({
-      name: `Turma ${turma.codigo} - ${turma.inicioTurma.split('-')[0]}`,
+      name: `Turma ${turma.numero} - ${turma.inicioTurma.split('-')[0]}`,
       ...turma,
     }))
   }
