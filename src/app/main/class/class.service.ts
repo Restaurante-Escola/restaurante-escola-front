@@ -6,27 +6,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class StudentsService {
+export class ClassService {
 
   constructor(private httpClient: HttpClient) { }
 
-	async getStudents() {
-    let response: any = await this.httpClient.get(`${environment.api_url}/alunos`).toPromise();
+	async getClasses() {
+    let response: any = await this.httpClient.get(`${environment.api_url}/turmas`).toPromise();
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
-	async createStudent(student: any) {
-    let response: any = await this.httpClient.post(`${environment.api_url}/alunos`, student).toPromise();
-    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
-  }
-
-	async updateStudent(student: any) {
-    let response: any = await this.httpClient.put(`${environment.api_url}/alunos/${student.matricula}`, student).toPromise();
-    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
-  }
-
-	async deleteStudent(matricula: any) {
-    let response: any = await this.httpClient.delete(`${environment.api_url}/alunos/${matricula}`).toPromise();
+  async deleteClass(codigo: any) {
+    let response: any = await this.httpClient.delete(`${environment.api_url}/turmas/${codigo}`).toPromise();
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { StudentsService } from '../class.service';
+import { ClassService } from '../class.service';
 
 @Component({
   selector: 'app-edit-create-student',
@@ -34,7 +34,7 @@ export class EditCreateStudentComponent implements OnInit {
   constructor(
 		public dialogRef: MatDialogRef<EditCreateStudentComponent>,
 		@Inject(MAT_DIALOG_DATA) public student: any,
-		private studentsService: StudentsService
+		private studentsService: ClassService
 	) { }
 
   ngOnInit(): void {
@@ -96,10 +96,10 @@ export class EditCreateStudentComponent implements OnInit {
 
     this.loadingSpinner = true;
 		if(this.isEditing) {
-			savedStudent = await this.studentsService.updateStudent(this.studentForm.value)
+			// savedStudent = await this.studentsService.updateStudent(this.studentForm.value)
 		}
 		else {
-			savedStudent = await this.studentsService.createStudent(this.studentForm.value)
+			// savedStudent = await this.studentsService.createStudent(this.studentForm.value)
 		}
     this.loadingSpinner = false;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditCreateStudentComponent } from '../edit-create-student/edit-create-student.component';
-import { StudentsService } from '../class.service';
+import { ClassService } from '../class.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
@@ -15,57 +15,56 @@ export class ClassListComponent implements OnInit {
 	displayedColumns: any = []
   dataSource: any = [];
   loading: boolean = true;
-  students: any = [];
+  class: any = [];
 
-  constructor(private studentsService: StudentsService, public dialog: MatDialog) { }
+  constructor(private classService: ClassService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
 	ngAfterViewInit(){
-		this.getStudents();
+		this.getClass();
 	}
 
-	async getStudents(){
+	async getClass(){
 		this.loading = true;
-		this.students = await this.studentsService.getStudents();
-		console.log("x", this.students);
-		this.dataSource = new MatTableDataSource(this.students);
-		this.displayedColumns = ['name', 'cpf', 'years', 'class', 'email', 'cellphone', 'icon'];
+		this.class = await this.classService.getClasses();
+		this.dataSource = new MatTableDataSource(this.class);
+		this.displayedColumns = ['name', 'date', 'numberOfStudents', 'icon'];
 		this.loading = false;
   }
 
 	async createStudent(){
-		const dialogRef = this.dialog.open(EditCreateStudentComponent, {
-			maxWidth: "1200px",
-			autoFocus : false
-		});
+		// const dialogRef = this.dialog.open(EditCreateStudentComponent, {
+		// 	maxWidth: "1200px",
+		// 	autoFocus : false
+		// });
 
-		let isSaved = await dialogRef.afterClosed().toPromise();
+		// let isSaved = await dialogRef.afterClosed().toPromise();
 
-		if(isSaved){
-			this.getStudents();
-		}
+		// if(isSaved){
+		// 	this.getStudents();
+		// }
 	}
 
 	async editStudent(student: any){
-		const dialogRef = this.dialog.open(EditCreateStudentComponent, {
-			data : student,
-			maxWidth: "1200px",
-			autoFocus : false
-		});
+		// const dialogRef = this.dialog.open(EditCreateStudentComponent, {
+		// 	data : student,
+		// 	maxWidth: "1200px",
+		// 	autoFocus : false
+		// });
 
-		let isSaved = await dialogRef.afterClosed().toPromise();
+		// let isSaved = await dialogRef.afterClosed().toPromise();
 
-		if(isSaved){
-			this.getStudents();
-		}
+		// if(isSaved){
+		// 	this.getStudents();
+		// }
 	}
 
-	async deleteStudent(student: any) {
+	async deleteStudent(classToDelete: any) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        message: 'Deletando esse estudante você não será mais capaz de acessar seus dados. Deseja continuar?'
+        message: 'Deletando essa turma você não será mais capaz de acessar seus dados. Deseja continuar?'
       },
       maxWidth: "360px",
       autoFocus : false,
@@ -76,10 +75,10 @@ export class ClassListComponent implements OnInit {
 
     if(result) {
       this.loading = true;
-      let deleted: any = await this.studentsService.deleteStudent(student.matricula);
+      let deleted: any = await this.classService.deleteClass(classToDelete.codigo);
 
       if(deleted) {
-        this.getStudents();
+        this.getClass();
       }
     }
   }
