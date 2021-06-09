@@ -15,6 +15,10 @@ const routes: Routes = [
 				path: "turmas", 
 				loadChildren: () => import('./main/class/class.module').then(m => m.ClassModule),
 			},
+			{
+				path: "frequencia", 
+				loadChildren: () => import('./main/class-frequency/class-frequency.module').then(m => m.ClassFrequencyModule),
+			},
 		],
     canActivate: [AuthenticationGuard] 
 	},
