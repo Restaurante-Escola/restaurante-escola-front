@@ -22,6 +22,91 @@
 
 .data-input {
   .input-label {
-    margin-right: 28px;
+    margin-right: 30px;
   }
+}
+
+.example-container {
+  position: relative;
+  min-height: 200px;
+  overflow: auto;
+  max-height: calc(100vh - 100px);
+
+  @media (max-width: 1024px) {
+    max-height: calc(100vh - 233px);
+  }
+
+  @media (max-width: 768px) {
+    max-height: calc(100vh - 100px);
+  }
+}
+
+.example-table-container {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  // max-height: calc(100vh - 300px);
+}
+
+.edit-icon {
+  margin-right: 16px;
+
+	&:last-child {
+		margin: 0;
+	}
+}
+
+.no-padding-right {
+	padding-right: 0;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-header-row, mat-row {
+  margin: 0px 24px;
+  border-color: #CACED3;
+	padding: 8px 0!important;
+}
+
+.mat-cell {
+	font-size: 16px;
+	color: #707070;
+}
+
+mat-header-cell {
+	font-size: 16px!important;
+	color: hsla(0,0%,43.9%,.5)!important;
+}
+
+mat-header-row {
+  top: -1px !important;
+}
+
+.mat-cell:first-of-type, mat-header-cell:first-of-type {
+  padding-left: 0px !important;
+  min-width: 220px !important;
+}
+
+.stats-column {
+  max-width: 140px !important;
+}
+
+.table-teams {
+  width: 100%;
+  min-width: 905px;
+}
+
+.first-checkbox {
+  margin-right: 25px;
 }
