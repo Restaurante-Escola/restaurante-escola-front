@@ -14,7 +14,7 @@ export class TurmaSelectComponent implements OnInit {
   @Input() parentForm!: FormGroup
   @Input() controlName: string = ''
 
-  turmas: any
+  turmas: any[] = []
 
   get form() {
     return this.parentForm.get(this.controlName) as FormControl
@@ -32,11 +32,14 @@ export class TurmaSelectComponent implements OnInit {
     this.turmaSelectService.getTurmasByName().subscribe(
       (response : any) => {
         this.turmas = this.handleTurmas(response)
+        this.turmas.sort((a, b) => {
+          return a.numero - b.numero
+        })
       }
     )
   }
 
-  handleTurmas(turmas: []) {
+  handleTurmas(turmas: any[]) {
     return turmas.map((turma: any) => ({
       name: `Turma ${turma.numero} - ${turma.inicioTurma.split('-')[0]}`,
       ...turma,
