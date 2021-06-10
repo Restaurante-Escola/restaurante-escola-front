@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const routes: Routes = [
   {
@@ -42,6 +44,8 @@ const routes: Routes = [
 		MatSelectModule,
 		MatCheckboxModule,
 		MatInputModule,
+		MatDatepickerModule,
+		MatNativeDateModule
   ]
 })
 export class ClassFrequencyModule { }

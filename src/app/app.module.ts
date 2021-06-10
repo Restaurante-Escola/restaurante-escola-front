@@ -15,6 +15,7 @@ import { AuthenticationInterceptor } from './authentication/interceptor/authenti
 import { LoginComponent } from './login/login.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 		FormsModule
   ],
   providers: [
+		{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
 	],
   bootstrap: [AppComponent]
