@@ -4,7 +4,7 @@
 		<h3>Listagem de todas as turmas</h3>
 	</div>
 	<div>
-		<button mat-flat-button color="primary" class="header-button" (click)='createStudent()'>Adicionar nova turma</button>
+		<button mat-flat-button color="primary" class="header-button" (click)='createClass()'>Adicionar nova turma</button>
 	</div>
 </div>
 
@@ -18,9 +18,9 @@
 
 			<ng-container matColumnDef="icon">
 				<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-				<mat-cell *matCellDef="let student">
-					<button mat-stroked-button (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
-					<button mat-stroked-button (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
+				<mat-cell *matCellDef="let class">
+					<button mat-stroked-button (click)='editClass(class)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
+					<button mat-stroked-button (click)='deleteClass(class)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
 				</mat-cell>
 			</ng-container>
 			
