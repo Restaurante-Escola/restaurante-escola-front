@@ -15,8 +15,8 @@ export class ClassFrequencyService {
     return this.httpClient.get(`${environment.api_url}/turmas/alunos/` + numeroTurma)
   }
 
-  getFrequenciaByTurmaDate(numeroTurma: number, dataAula: string) {
-    return this.httpClient.get(`${environment.api_url}/frequencias/data?numeroTurma=${numeroTurma}&dataAula=${dataAula}`)
+  getFrequenciaByTurmaDate(numeroTurma: number, data: string) {
+    return this.httpClient.get(`${environment.api_url}/frequencias/data?numeroTurma=${numeroTurma}&data=${data}`)
   }
 
   postRegistrarFrequenciaByAluno(matricula: number, numeroTurma: number, dataAula: string, status: string) {
