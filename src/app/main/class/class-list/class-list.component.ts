@@ -4,6 +4,7 @@ import { EditCreateClassComponent } from '../edit-create-class/edit-create-class
 import { ClassService } from '../class.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-class-list',
@@ -17,7 +18,11 @@ export class ClassListComponent implements OnInit {
   loading: boolean = true;
   class: any = [];
 
-  constructor(private classService: ClassService, public dialog: MatDialog) { }
+  constructor(
+    private classService: ClassService, 
+    public dialog: MatDialog,     
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +35,7 @@ export class ClassListComponent implements OnInit {
 		this.loading = true;
 		this.class = await this.classService.getClasses();
 		this.dataSource = new MatTableDataSource(this.class);
-		this.displayedColumns = ['icon', 'name', 'date', 'numberOfStudents'];
+		this.displayedColumns = ['icon', 'name', 'date'];
 		this.loading = false;
   }
 
@@ -84,4 +89,8 @@ export class ClassListComponent implements OnInit {
     }
   }
 
+  async listStudents(classData: any) {
+    console.log('class', classData)
+    this.router.navigateByUrl(`/alunos/${classData.codigo}`);
+  }
 }
