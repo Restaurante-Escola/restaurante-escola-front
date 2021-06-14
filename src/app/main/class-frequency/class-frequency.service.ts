@@ -24,4 +24,10 @@ export class ClassFrequencyService {
       matricula, numeroTurma, dataAula, status
     })
   }
+
+  putFrequenciaByAluno(codigo: number, matricula: number, numeroTurma: number, dataAula: string, status: string) {
+    return this.httpClient.put(`${environment.api_url}/frequencias/${codigo}`, {
+      matricula, numeroTurma, dataAula, status
+    })
+  }
 }
