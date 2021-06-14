@@ -13,6 +13,7 @@ export class TurmaSelectComponent implements OnInit {
   @Input() errorMessage: string = "Campo obrigatório"
   @Input() parentForm!: FormGroup
   @Input() controlName: string = ''
+  @Input() disabled: boolean = false;
 
   turmas: any[] = []
 

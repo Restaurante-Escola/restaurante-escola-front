@@ -16,6 +16,10 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { OccurenceComponent } from './occurence/occurence.component';
+import { AdvertenceComponent } from './advertence/advertence.component';
 
 const routes: Routes = [
   {
@@ -25,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [StudentsListComponent, EditCreateStudentComponent],
+  declarations: [StudentsListComponent, EditCreateStudentComponent, OccurenceComponent, AdvertenceComponent],
   imports: [
     CommonModule,
 		RouterModule.forChild(routes),
@@ -42,7 +46,9 @@ const routes: Routes = [
 		FormsModule,
 		MatSelectModule,
 		MatCheckboxModule,
-		MatInputModule
+		MatInputModule,
+		SharedModule,
+		MatTooltipModule
   ]
 })
 export class StudentsModule { }
