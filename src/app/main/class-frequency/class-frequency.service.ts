@@ -20,7 +20,7 @@ export class ClassFrequencyService {
   }
 
   postRegistrarFrequenciaByAluno(matricula: number, numeroTurma: number, dataAula: string, status: string) {
-    return this.httpClient.post(`${environment.api_url}/frequencias/data`, {
+    return this.httpClient.post(`${environment.api_url}/frequencias`, {
       matricula, numeroTurma, dataAula, status
     })
   }
