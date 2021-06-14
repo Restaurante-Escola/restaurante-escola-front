@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
-import * as moment from 'moment';
 import { ClassFrequencyService } from '../class-frequency.service';
 
 enum StatusFrequencia {
@@ -16,8 +15,7 @@ enum StatusFrequencia {
   styleUrls: ['./class-students-list.component.scss']
 })
 export class ClassStudentsListComponent implements OnInit {
-  @ViewChild('firstCheckbox') firstCheckbox!: MatCheckbox
-  @ViewChild('secondCheckbox') secondCheckbox!: MatCheckbox
+  @ViewChild('inputDatePicker') inputDatePicker!: ElementRef
 
   dataSource: any[] = []
   displayedColumns: any = []
@@ -26,6 +24,7 @@ export class ClassStudentsListComponent implements OnInit {
   headerForm!: FormGroup
 
   disableRegistrar: boolean = false
+  isEditing: boolean = false
 
   constructor(
     private classFrequencyService: ClassFrequencyService
@@ -33,14 +32,13 @@ export class ClassStudentsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.montarFormulario()
-    this.formObserver()
   }
 
   montarFormulario() {
     this.headerForm = new FormGroup({
       turma: new FormControl('', Validators.required),
       data: new FormControl(null, Validators.required),
-    }, { updateOn: 'blur' })
+    })
   }
 
   get turma() {
@@ -51,28 +49,18 @@ export class ClassStudentsListComponent implements OnInit {
     return this.headerForm.get('data')
   }
 
-  formObserver() {
-    this.headerForm.valueChanges.subscribe((changes) => {
-      if (this.headerForm.valid) {
-        this.adjustData()
-        this.getAlunosByTurma()
-      }
-    })
+  consultarFrequencias() {
+    if (this.headerForm.valid) {
+      this.loading = true
+      const data = this.adjustData()
+      this.getFrequencias(this.headerForm.controls.turma?.value.numero, data)
+    }
   }
 
   getAlunosByTurma() {
     this.classFrequencyService.getAlunosByTurmaNumero(this.turma?.value.numero).subscribe(
       (response: any) => {
-        this.dataSource = response
-        this.dataSource = this.dataSource.map((aluno) => { 
-          aluno.firstChecked = false
-          aluno.secondChecked = false
-          return aluno
-        })
-        this.displayedColumns = ['icon', 'name'];
-        this.loading = false
-        
-        // this.getFrequencias()
+        this.setupTable(response)
       },
       (error) => {
         console.error(error)
@@ -80,37 +68,90 @@ export class ClassStudentsListComponent implements OnInit {
     )
   }
 
-  // getFrequencias(): boolean {
-  //   this.classFrequencyService.getFrequenciaByTurmaDate(this.turma?.value.numero, "09/06/2021").subscribe(
-  //     (response) => {
-  //       this.disableRegistrar = false
-  //       return true
-  //     },
-  //     (error) => {
-  //       console.error(error)
-  //     }
-  //   )
-  //   return false
-  // }
+  getFrequencias(nrTurma: number, data: string) {
+    this.classFrequencyService.getFrequenciaByTurmaDate(nrTurma, data).subscribe(
+      (response: any) => {
+        this.isEditing = true
+        this.setupTable(response)
+        this.dataSource = this.dataSource.map((aluno) => {
+          aluno = { ...aluno, ...aluno.alunoDto }
+          aluno.firstChecked = false
+          aluno.secondChecked = false
+          return aluno
+        })
+        this.checkCheckboxes()
+      },
+      (error) => {
+        if (error.status == 404){
+          this.getAlunosByTurma()
+          this.isEditing = false
+        }
+        else
+          console.error(error)
+      }
+    )
+  }
+
+  setupTable(response: any[]) {
+    this.dataSource = response
+    this.dataSource = this.dataSource.map((aluno) => { 
+      aluno.firstChecked = false
+      aluno.secondChecked = false
+      return aluno
+    })
+    this.displayedColumns = ['icon', 'name', 'matricula', 'numeroFaltas'];
+    this.loading = false
+    this.disableRegistrar = false
+  }
 
   registrarPresencas() {
+    this.disableRegistrar = true
     this.dataSource.forEach((aluno) => {
-      if (aluno.firstChecked && aluno.secondChecked) {
-        aluno.status = StatusFrequencia[2]
-      }
-      else if (aluno.firstChecked || aluno.secondChecked) {
-        aluno.status = StatusFrequencia[1]
-      }
-      else {
-        aluno.status = StatusFrequencia[0]
-      }
+      aluno.status = this.getAlunoStatus(aluno)
 
-      // this.registrarFrequenciaAluno(aluno.matricula, aluno.status)
+      this.registrarFrequenciaAluno(aluno.matricula, aluno.status, aluno?.codigo)
     })
   }
 
-  registrarFrequenciaAluno(matricula: number, status: string) {
-    this.classFrequencyService.postRegistrarFrequenciaByAluno(matricula, this.turma?.value.numero, "09/06/2021", status)
+  registrarFrequenciaAluno(matricula: number, status: string, codigo: number) {
+    if (!this.isEditing)
+      this.classFrequencyService.postRegistrarFrequenciaByAluno(matricula, this.turma?.value.numero, this.adjustData(), status).subscribe(
+        () => {},
+        (error) => {
+          console.error(error)
+        }
+      )
+    else
+      this.classFrequencyService.putFrequenciaByAluno(codigo, matricula, this.turma?.value.numero, this.adjustData(), status).subscribe(
+        () => {},
+        (error) => {
+          console.error(error)
+        }
+      )
+  }
+
+  checkCheckboxes() {
+    this.dataSource.forEach((aluno) => {
+      if (aluno.status == StatusFrequencia[2]) {
+        aluno.firstChecked = true
+        aluno.secondChecked = true
+      }
+      else if (aluno.status == StatusFrequencia[1]) {
+        aluno.firstChecked = true
+      }
+    })
+  }
+
+  getAlunoStatus(aluno: any): string {
+    if (aluno.firstChecked && aluno.secondChecked) {
+      return StatusFrequencia[2]
+    }
+    else if (aluno.firstChecked || aluno.secondChecked) {
+      return StatusFrequencia[1]
+    }
+    else {
+      return StatusFrequencia[0]
+    }
   }
  
   onCheckboxChecked(selectedAluno: any, event: boolean, checkboxNumber: number) {
@@ -122,8 +163,8 @@ export class ClassStudentsListComponent implements OnInit {
     }
   }
 
-  adjustData() {
-    console.log(moment(this.data?.value).day());
-    
+  adjustData(): string {
+    console.log(this.inputDatePicker.nativeElement.value)
+    return this.inputDatePicker.nativeElement.value
   }
 }
