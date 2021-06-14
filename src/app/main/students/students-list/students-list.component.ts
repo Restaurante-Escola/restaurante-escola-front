@@ -4,6 +4,8 @@ import { EditCreateStudentComponent } from '../edit-create-student/edit-create-s
 import { StudentsService } from '../students.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { ActivatedRoute } from '@angular/router';
+
 import { OccurenceAdvertenceComponent } from '../occurence-advertence/occurence-advertence.component';
 @Component({
   selector: 'app-students-list',
@@ -16,8 +18,13 @@ export class StudentsListComponent implements OnInit {
   dataSource: any = [];
   loading: boolean = true;
   students: any = [];
+  classCode: any;
 
-  constructor(private studentsService: StudentsService, public dialog: MatDialog) { }
+  constructor(private studentsService: StudentsService, public dialog: MatDialog,  public route: ActivatedRoute) { 
+    this.route.paramMap.subscribe( paramMap => {
+      this.classCode = paramMap.get('codigoTurma');
+  });
+  }
 
   ngOnInit(): void {
   }
@@ -28,8 +35,13 @@ export class StudentsListComponent implements OnInit {
 
 	async getStudents(){
 		this.loading = true;
-		this.students = await this.studentsService.getStudents();
-		console.log("x", this.students);
+    if(this.classCode) {
+      console.log('with code')
+      this.students = await this.studentsService.getStudentsFromClass(this.classCode);
+    } else {
+      this.students = await this.studentsService.getStudents();
+    }
+		console.log("x", this.students, this.classCode);
 		this.dataSource = new MatTableDataSource(this.students);
 		this.displayedColumns = ['icon', 'name', 'cpf', 'class', 'email', 'cellphone'];
 		this.loading = false;

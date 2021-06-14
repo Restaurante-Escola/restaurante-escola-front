@@ -30,6 +30,10 @@ export class StudentsService {
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
+  async getStudentsFromClass(classCode: any) {
+    let response: any = await this.httpClient.get(`${environment.api_url}/turmas/alunos/${classCode}`).toPromise();
+    return response || [];
+  }
 	async addStudentToClass(studentData: Object) {
     let response: any = await this.httpClient.post(`${environment.api_url}/turmas/cadastrar-alunos`, studentData).toPromise();
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null

@@ -10,7 +10,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { EditCreateStudentComponent } from './edit-create-student/edit-create-student.component'
+import { EditCreateClassComponent } from './edit-create-class/edit-create-class.component'
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ClassListComponent, EditCreateStudentComponent],
+  declarations: [ClassListComponent, EditCreateClassComponent],
   imports: [
     CommonModule,
 		RouterModule.forChild(routes),
