@@ -53,12 +53,12 @@ export class ClassStudentsListComponent implements OnInit {
     if (this.headerForm.valid) {
       this.loading = true
       const data = this.adjustData()
-      this.getFrequencias(this.headerForm.controls.turma?.value.numero, data)
+      this.getFrequencias(this.headerForm.controls.turma?.value, data)
     }
   }
 
   getAlunosByTurma() {
-    this.classFrequencyService.getAlunosByTurmaNumero(this.turma?.value.numero).subscribe(
+    this.classFrequencyService.getAlunosByTurmaNumero(this.turma?.value).subscribe(
       (response: any) => {
         this.setupTable(response)
       },
@@ -115,14 +115,14 @@ export class ClassStudentsListComponent implements OnInit {
 
   registrarFrequenciaAluno(matricula: number, status: string, codigo: number) {
     if (!this.isEditing)
-      this.classFrequencyService.postRegistrarFrequenciaByAluno(matricula, this.turma?.value.numero, this.adjustData(), status).subscribe(
+      this.classFrequencyService.postRegistrarFrequenciaByAluno(matricula, this.turma?.value, this.adjustData(), status).subscribe(
         () => {},
         (error) => {
           console.error(error)
         }
       )
     else
-      this.classFrequencyService.putFrequenciaByAluno(codigo, matricula, this.turma?.value.numero, this.adjustData(), status).subscribe(
+      this.classFrequencyService.putFrequenciaByAluno(codigo, matricula, this.turma?.value, this.adjustData(), status).subscribe(
         () => {},
         (error) => {
           console.error(error)
