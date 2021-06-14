@@ -1,0 +1,37 @@
+<mat-dialog-content>
+
+	<div *ngFor='let document of documents' style='display: flex;
+	align-items: center;
+	margin-bottom: 32px;'>
+		<div class='content'>
+			<mat-form-field>
+				<mat-label>Data</mat-label>
+				<input matInput [matDatepicker]="picker" [value]='document.data'>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+	
+			<textarea rows="7" cols="40">{{document.descricao}}</textarea>
+		</div>
+
+		<mat-icon (click)='deleteDocument(document)'>remove_circle_outline</mat-icon>
+	</div>
+	
+	
+	<form [formGroup]="form">
+		<div class='content'>
+			<mat-form-field>
+				<mat-label>Data</mat-label>
+				<input matInput [matDatepicker]="picker" formControlName="data">
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+	
+			<textarea rows="7" cols="40" formControlName="descricao"></textarea>
+		</div>
+
+		<mat-icon (click)='save()'>add_circle_outline</mat-icon>
+	</form>
+</mat-dialog-content>
+
+

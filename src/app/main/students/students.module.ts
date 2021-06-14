@@ -18,8 +18,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { OccurenceComponent } from './occurence/occurence.component';
-import { AdvertenceComponent } from './advertence/advertence.component';
+import { OccurenceAdvertenceComponent } from './occurence-advertence/occurence-advertence.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [StudentsListComponent, EditCreateStudentComponent, OccurenceComponent, AdvertenceComponent],
+  declarations: [StudentsListComponent, EditCreateStudentComponent, OccurenceAdvertenceComponent],
   imports: [
     CommonModule,
 		RouterModule.forChild(routes),
@@ -48,7 +49,9 @@ const routes: Routes = [
 		MatCheckboxModule,
 		MatInputModule,
 		SharedModule,
-		MatTooltipModule
+		MatTooltipModule,
+		MatDatepickerModule,
+		MatNativeDateModule
   ]
 })
 export class StudentsModule { }

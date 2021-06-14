@@ -11,7 +11,6 @@ import { StudentsService } from '../students.service';
 export class EditCreateStudentComponent implements OnInit {
 
 	studentForm!: FormGroup;
-	loading: boolean = false;
 	loadingSpinner: boolean = false;
 	isEditing: boolean = false;
 

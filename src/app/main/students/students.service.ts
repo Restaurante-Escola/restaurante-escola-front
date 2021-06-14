@@ -35,6 +35,36 @@ export class StudentsService {
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
+	async getAdvertences(studentData: any) {
+    let response: any = await this.httpClient.get(`${environment.api_url}/advertencias/aluno/${studentData}`).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
+	async saveAdvertence(advertence: any) {
+    let response: any = await this.httpClient.post(`${environment.api_url}/advertencias`, advertence).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
+	async deleteAdvertence(codigo: any) {
+    let response: any = await this.httpClient.delete(`${environment.api_url}/advertencias/${codigo}`).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
+	async getOccurences(studentData: any) {
+    let response: any = await this.httpClient.get(`${environment.api_url}/ocorrencias/aluno/${studentData}`).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
+	async saveOccurence(occurence: any) {
+    let response: any = await this.httpClient.post(`${environment.api_url}/ocorrencias`, occurence).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
+	async deleteOccurence(codigo: any) {
+    let response: any = await this.httpClient.delete(`${environment.api_url}/ocorrencias/${codigo}`).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
 	studentToForm(student: any){
 		let formStudent = {
 			nome: student.nome,

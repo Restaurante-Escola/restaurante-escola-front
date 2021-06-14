@@ -4,7 +4,7 @@ import { EditCreateStudentComponent } from '../edit-create-student/edit-create-s
 import { StudentsService } from '../students.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
-import { OccurenceComponent } from '../occurence/occurence.component';
+import { OccurenceAdvertenceComponent } from '../occurence-advertence/occurence-advertence.component';
 @Component({
   selector: 'app-students-list',
   templateUrl: './students-list.component.html',
@@ -35,8 +35,29 @@ export class StudentsListComponent implements OnInit {
 		this.loading = false;
   }
 
+	async studentAdvertence(student: any){
+		const dialogRef = this.dialog.open(OccurenceAdvertenceComponent, {
+			data : {
+				student,
+				context: 'advertence'
+			},
+			maxWidth: "1200px",
+			autoFocus : false
+		});
+
+		let isSaved = await dialogRef.afterClosed().toPromise();
+
+		if(isSaved){
+			this.getStudents();
+		}
+	}
+
 	async studentOccurrence(student: any){
-		const dialogRef = this.dialog.open(OccurenceComponent, {
+		const dialogRef = this.dialog.open(OccurenceAdvertenceComponent, {
+			data : {
+				student,
+				context: 'occurence'
+			},
 			maxWidth: "1200px",
 			autoFocus : false
 		});

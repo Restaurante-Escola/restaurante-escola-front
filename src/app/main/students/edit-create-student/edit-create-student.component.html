@@ -1,4 +1,4 @@
-<mat-dialog-content *ngIf='!loading'>
+<mat-dialog-content>
 	<form [formGroup]="studentForm">
 		<div class='info-section'>
 			<div class='row'>
@@ -9,7 +9,7 @@
 				</div>
 	
 				<div class='col-md-6' style='display: flex; align-items: center;'>
-					<app-turma-select [disabled]='true' style='width: 100%;' label="Turma" [parentForm]="studentForm" [controlName]='"turma"'></app-turma-select>
+					<app-turma-select style='width: 100%;' label="Turma" [parentForm]="studentForm" [controlName]='"turma"'></app-turma-select>
 				</div>
 	
 				<div class='col-md-6'>
