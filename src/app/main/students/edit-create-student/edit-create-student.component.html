@@ -1,5 +1,26 @@
-<mat-dialog-content *ngIf='!loading'>
-  <form [formGroup]="studentForm">
+<mat-dialog-content>
+	<form [formGroup]="studentForm">
+		<div class='info-section'>
+			<div class='row'>
+				<div class='col-md-12'>
+					<span class='section-title'>
+						Vincular Aluno
+					</span>
+				</div>
+	
+				<div class='col-md-6' style='display: flex; align-items: center;'>
+					<app-turma-select style='width: 100%;' label="Turma" [parentForm]="studentForm" [controlName]='"turma"'></app-turma-select>
+				</div>
+	
+				<div class='col-md-6'>
+					<mat-form-field class="field">
+						<mat-label>Matricula</mat-label>
+						<input matInput formControlName="matricula" [readonly]='isEditing'>
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+
     <div class='info-section'>
       <div class='row'>
         <div class='col-md-12'>
@@ -332,12 +353,10 @@
   </form>
 
   <div class='save-buttons dialog-footer'>
-    <div style='display: flex;'>
-      <button mat-stroked-button (click)="cancel()">Cancelar</button>
-      <button mat-flat-button color="primary" (click)="save()" *ngIf='!loadingSpinner'>{{isEditing ? 'Atualizar' : 'Criar'}}</button>
-      <button mat-flat-button color='primary' class='button-loading-spinner' *ngIf='loadingSpinner'>
-        <mat-spinner diameter='25'></mat-spinner>
-      </button>
-    </div>
+		<button mat-stroked-button (click)="cancel()">Cancelar</button>
+		<button mat-flat-button color="primary" (click)="save()" *ngIf='!loadingSpinner'>{{isEditing ? 'Atualizar' : 'Criar'}}</button>
+		<button mat-flat-button color='primary' class='button-loading-spinner' *ngIf='loadingSpinner'>
+			<mat-spinner diameter='25'></mat-spinner>
+		</button>
   </div>
 </mat-dialog-content>

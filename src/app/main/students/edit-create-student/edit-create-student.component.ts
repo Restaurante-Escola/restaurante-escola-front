@@ -11,7 +11,6 @@ import { StudentsService } from '../students.service';
 export class EditCreateStudentComponent implements OnInit {
 
 	studentForm!: FormGroup;
-	loading: boolean = false;
 	loadingSpinner: boolean = false;
 	isEditing: boolean = false;
 
@@ -78,7 +77,8 @@ export class EditCreateStudentComponent implements OnInit {
 			fumante: new FormControl(false),
 			medicamentosUsoContinuo: new FormControl(''),
 			observacao: new FormControl(''),
-			matricula: new FormControl(123458886708)
+			matricula: new FormControl(''),
+			turma: new FormControl(''),
     });
 
 		if(this.student?.nome) {
@@ -88,22 +88,25 @@ export class EditCreateStudentComponent implements OnInit {
   }
 
 	async save() {
-		let savedStudent;
     if(!this.studentForm.valid) {
       this.studentForm.markAllAsTouched();
       return;
     }
 
+		let studentData: any = this.studentForm.value
+		delete studentData.turma;
+
     this.loadingSpinner = true;
 		if(this.isEditing) {
-			savedStudent = await this.studentsService.updateStudent(this.studentForm.value)
+			await this.studentsService.updateStudent(studentData)
 		}
 		else {
-			savedStudent = await this.studentsService.createStudent(this.studentForm.value)
+			await this.studentsService.createStudent(studentData)
+			await this.studentsService.addStudentToClass({matricula: studentData.matricula, numeroTurma: this.studentForm.get('turma')?.value});
 		}
     this.loadingSpinner = false;
 
-    this.dialogRef.close(savedStudent);
+    this.dialogRef.close(studentData);
   }
 
 	cancel() {

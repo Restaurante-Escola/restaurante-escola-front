@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 
+import { OccurenceAdvertenceComponent } from '../occurence-advertence/occurence-advertence.component';
 @Component({
   selector: 'app-students-list',
   templateUrl: './students-list.component.html',
@@ -42,9 +43,43 @@ export class StudentsListComponent implements OnInit {
     }
 		console.log("x", this.students, this.classCode);
 		this.dataSource = new MatTableDataSource(this.students);
-		this.displayedColumns = ['icon', 'name', 'cpf', 'years', 'class', 'email', 'cellphone'];
+		this.displayedColumns = ['icon', 'name', 'cpf', 'class', 'email', 'cellphone'];
 		this.loading = false;
   }
+
+	async studentAdvertence(student: any){
+		const dialogRef = this.dialog.open(OccurenceAdvertenceComponent, {
+			data : {
+				student,
+				context: 'advertence'
+			},
+			maxWidth: "1200px",
+			autoFocus : false
+		});
+
+		let isSaved = await dialogRef.afterClosed().toPromise();
+
+		if(isSaved){
+			this.getStudents();
+		}
+	}
+
+	async studentOccurrence(student: any){
+		const dialogRef = this.dialog.open(OccurenceAdvertenceComponent, {
+			data : {
+				student,
+				context: 'occurence'
+			},
+			maxWidth: "1200px",
+			autoFocus : false
+		});
+
+		let isSaved = await dialogRef.afterClosed().toPromise();
+
+		if(isSaved){
+			this.getStudents();
+		}
+	}
 
 	async createStudent(){
 		const dialogRef = this.dialog.open(EditCreateStudentComponent, {

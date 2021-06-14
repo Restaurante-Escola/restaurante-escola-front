@@ -1,24 +1,29 @@
 <div class='page-header'>
-	<div class="input turma-input">
-		<p class="input-label">Turma:</p>
-		<app-turma-select
-			label=""
-			[parentForm]="headerForm"
-			controlName="turma"
-		></app-turma-select>
+	<div class="container-form">
+		<div class="input turma-input-container">
+			<p class="input-label">Turma:</p>
+			<app-turma-select
+				label=""
+				[parentForm]="headerForm"
+				controlName="turma"
+			></app-turma-select>
+		</div>
+		<div class="input data-input-container">
+			<p class="input-label">Data:</p>
+			<mat-form-field [formGroup]="headerForm" class="data-input">
+				<input matInput [matDatepicker]="picker" formControlName="data" #inputDatePicker>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+				<mat-error *ngIf="headerForm.get('data')?.hasError('required')">{{ "Campo obrigatório" }}</mat-error>
+			</mat-form-field>
+		</div>
 	</div>
-	<div class="input data-input">
-		<p class="input-label">Data:</p>
-		<mat-form-field>
-			<mat-label>Choose a date</mat-label>
-			<input matInput [matDatepicker]="picker" controlName="data">
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
-		</mat-form-field>
+	<div class="container-bttns">
+		<button mat-flat-button color="primary" (click)='consultarFrequencias()' class='' tooltip="Consultar">Consultar</button>
 	</div>
 </div>
 
-<div class="example-container mat-elevation-z8" style='margin: 32px 0; border-radius: 15px;'>
+<div class="example-container mat-elevation-z8" style='margin: 32px 0; border-radius: 15px;' *ngIf="dataSource.length > 0">
 	<div class="example-loading-shade" *ngIf="loading">
 		<mat-spinner></mat-spinner>
 	</div>
@@ -27,15 +32,17 @@
 		<mat-table [dataSource]="dataSource" class="table-teams" [hidden]="dataSource.length == 0">
 
 			<ng-container matColumnDef="icon">
-				<mat-header-cell *matHeaderCellDef></mat-header-cell>
+				<mat-header-cell *matHeaderCellDef>Períodos</mat-header-cell>
 				<mat-cell *matCellDef="let student" class="checkboxes-container">
 					<mat-checkbox
 						#firstCheckbox
 						class="first-checkbox"
+						[checked]="student.firstChecked"
 						(change)="onCheckboxChecked(student, $event.checked, 1)"
 					></mat-checkbox>
 					<mat-checkbox
 						#secondCheckbox
+						[checked]="student.secondChecked"
 						(change)="onCheckboxChecked(student, $event.checked, 2)"
 					></mat-checkbox>
 				</mat-cell>
@@ -48,19 +55,27 @@
 				</mat-cell>
 			</ng-container>
 
-			<!-- <ng-container matColumnDef="">
-				<mat-header-cell *matHeaderCellDef class='centered-text no-padding-right'> Ações </mat-header-cell>
-				<mat-cell *matCellDef="let student" class='centered-text no-padding-right'>
-					<button mat-stroked-button (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
-					<button mat-stroked-button (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
+			<ng-container matColumnDef="matricula">
+				<mat-header-cell *matHeaderCellDef>Matricula</mat-header-cell>
+				<mat-cell *matCellDef="let student">
+					{{student.matricula ? student.matricula : '-'}}
 				</mat-cell>
-			</ng-container> -->
+			</ng-container>
+
+			<ng-container matColumnDef="numeroFaltas">
+				<mat-header-cell *matHeaderCellDef>Qtnd. Faltas</mat-header-cell>
+				<mat-cell *matCellDef="let student">
+					{{student.frequencias ? student.frequencias.length : '-'}}
+				</mat-cell>
+			</ng-container>
 
 			<mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 		</mat-table>
 	</div>
 </div>
-<div class="container-bttns">
-	<button mat-stroked-button (click)='registrarPresencas()' class='' tooltip="Registrar presença" [disabled]="disableRegistrar">Registrar</button>
+<div class="container-bttns" *ngIf="dataSource.length > 0">
+	<button mat-flat-button color="primary" (click)='registrarPresencas()' class='' tooltip="Registrar presença" [disabled]="disableRegistrar">
+		{{ isEditing ? 'Atualizar' : 'Registrar'}}
+	</button>
 </div>

@@ -19,8 +19,10 @@
 			<ng-container matColumnDef="icon">
 				<mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
 				<mat-cell *matCellDef="let student">
-					<button mat-stroked-button (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
-					<button mat-stroked-button (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
+					<button mat-stroked-button matTooltip="Advertência" matTooltipPosition="above" (click)='studentAdvertence(student)' class='edit-icon icons-table'><mat-icon>flag</mat-icon></button>
+					<button mat-stroked-button matTooltip="Ocorrência" matTooltipPosition="above" (click)='studentOccurrence(student)' class='edit-icon icons-table'><mat-icon>warning</mat-icon></button>
+					<button mat-stroked-button matTooltip="Editar" matTooltipPosition="above" (click)='editStudent(student)' class='edit-icon icons-table'><mat-icon>edit</mat-icon></button>
+					<button mat-stroked-button matTooltip="Excluir" matTooltipPosition="above" (click)='deleteStudent(student)' class='edit-icon icons-table'><mat-icon>delete</mat-icon></button>
 				</mat-cell>
 			</ng-container>
 
@@ -34,21 +36,14 @@
 			<ng-container matColumnDef="cpf">
 				<mat-header-cell *matHeaderCellDef class='centered-text'> CPF </mat-header-cell>
 				<mat-cell *matCellDef="let student" class='centered-text'>
-					{{student.cpf | mask: '000.000.000-00'}}
-				</mat-cell>
-			</ng-container>
-
-			<ng-container matColumnDef="years">
-				<mat-header-cell *matHeaderCellDef class='centered-text'> Idade </mat-header-cell>
-				<mat-cell *matCellDef="let student" class='centered-text'>
-					{{student.idade ? student.idade : '-'}}
+					{{student.cpf ? (student.cpf| mask: '000.000.000-00') : '-'}}
 				</mat-cell>
 			</ng-container>
 
 			<ng-container matColumnDef="class">
 				<mat-header-cell *matHeaderCellDef class='centered-text'> Turma </mat-header-cell>
 				<mat-cell *matCellDef="let student" class='centered-text'>
-					{{student.turma ? student.turma : '-'}}
+					{{student.numeroTurma ? student.numeroTurma : '-'}}
 				</mat-cell>
 			</ng-container>
 
