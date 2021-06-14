@@ -13,16 +13,12 @@
     margin-top: 5px;
     font-weight: 500;
     font-size: 20px;
+    width: 60px;
   }
 
-  app-turma-select {
+  app-turma-select, .data-input {
     font-size: 16px;
-  }
-}
-
-.data-input {
-  .input-label {
-    margin-right: 30px;
+    width: 200px;
   }
 }
 
@@ -85,28 +81,19 @@ mat-header-row, mat-row {
 }
 
 mat-header-cell {
-	font-size: 16px!important;
+	font-size: 16px !important;
 	color: hsla(0,0%,43.9%,.5)!important;
 }
 
-mat-header-row {
-  top: -1px !important;
-}
-
-.mat-cell:first-of-type, mat-header-cell:first-of-type {
-  padding-left: 0px !important;
-  min-width: 220px !important;
-}
-
-.stats-column {
-  max-width: 140px !important;
-}
-
-.table-teams {
-  width: 100%;
-  min-width: 905px;
+mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
+  padding-left: 15px !important;
+  min-width: 150px !important;
 }
 
 .first-checkbox {
   margin-right: 25px;
+}
+
+.container-form {
+  margin-bottom: 15px;
 }
