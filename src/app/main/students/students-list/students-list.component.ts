@@ -4,7 +4,7 @@ import { EditCreateStudentComponent } from '../edit-create-student/edit-create-s
 import { StudentsService } from '../students.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
-
+import { OccurenceComponent } from '../occurence/occurence.component';
 @Component({
   selector: 'app-students-list',
   templateUrl: './students-list.component.html',
@@ -31,9 +31,22 @@ export class StudentsListComponent implements OnInit {
 		this.students = await this.studentsService.getStudents();
 		console.log("x", this.students);
 		this.dataSource = new MatTableDataSource(this.students);
-		this.displayedColumns = ['icon', 'name', 'cpf', 'years', 'class', 'email', 'cellphone'];
+		this.displayedColumns = ['icon', 'name', 'cpf', 'class', 'email', 'cellphone'];
 		this.loading = false;
   }
+
+	async studentOccurrence(student: any){
+		const dialogRef = this.dialog.open(OccurenceComponent, {
+			maxWidth: "1200px",
+			autoFocus : false
+		});
+
+		let isSaved = await dialogRef.afterClosed().toPromise();
+
+		if(isSaved){
+			this.getStudents();
+		}
+	}
 
 	async createStudent(){
 		const dialogRef = this.dialog.open(EditCreateStudentComponent, {

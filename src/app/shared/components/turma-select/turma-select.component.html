@@ -1,7 +1,7 @@
   <mat-form-field [formGroup]="parentForm">
     <mat-label *ngIf="label">{{ label }}</mat-label>
-    <mat-select [formControlName]="controlName">
-      <mat-option *ngFor="let turma of turmas" [value]="turma">
+    <mat-select [formControlName]="controlName" [disabled]='disabled'>
+      <mat-option *ngFor="let turma of turmas" [value]="turma.numero">
         {{ turma.name }}
       </mat-option>
     </mat-select>
