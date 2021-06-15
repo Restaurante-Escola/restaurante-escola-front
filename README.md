@@ -1,28 +1,30 @@
-# SchoolRestaurant
+# Projeto Restaurante Escola
+![logo-restaurante-escola](https://user-images.githubusercontent.com/47484964/122082655-90be0600-cdd6-11eb-9108-a83a1f412e8d.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Aplicação feita para o Projeto Restaurante Escola por meio de uma atividade interdisciplinar realizada nos 7º e 8º semestres na Universidade Católica de Santos.
 
-## Development server
+## Introdução
+O Projeto Restaurante-escola “Estação Bistrô” é desenvolvido pela Sociedade Visconde de São Leopoldo, juntamente com sua mantenedora, Universidade Católica de Santos – UNISANTOS, responsável pela gestão do restaurante e pela formação profissional de jovens em estado de vulnerabilidade pessoal e social desde 2012.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas
+- Angular
+- Git
+- Java
+- Springboot
 
-## Code scaffolding
+## Documentação
+A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, podem ser encontrados na nossa [wiki](https://github.com/Restaurante-Escola/restaurante-escola-api/wiki/Documenta%C3%A7%C3%A3o)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Integrantes do Grupo
+- Arthur Chaves
+- Beatriz Justino
+- Felipe Ferreira
+- Gabriel Romano
+- Guilherme Rabelo
+- Jaime Mathias
+- Luis Durante
+- Rafael Oliveira
+- Victor Moreno
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
+## Repositório do Back-end
+https://github.com/Restaurante-Escola/restaurante-escola-api
