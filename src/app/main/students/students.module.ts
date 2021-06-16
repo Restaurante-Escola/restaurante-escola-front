@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: '',
     component: StudentsListComponent
-  }
+  },
+	{ 
+		path: ":numeroTurma", 
+		component: StudentsListComponent
+	},
 ];
 
 @NgModule({

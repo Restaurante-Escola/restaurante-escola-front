@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { StudentsService } from '../students.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-edit-create-student',
   templateUrl: './edit-create-student.component.html',
@@ -11,6 +11,7 @@ import { StudentsService } from '../students.service';
 export class EditCreateStudentComponent implements OnInit {
 
 	studentForm!: FormGroup;
+	studentClone: any = {};
 	loadingSpinner: boolean = false;
 	isEditing: boolean = false;
 
@@ -84,6 +85,7 @@ export class EditCreateStudentComponent implements OnInit {
 		if(this.student?.nome) {
 			this.isEditing = true;
 			this.studentForm.setValue(this.studentsService.studentToForm(this.student))
+			Object.assign(this.studentClone, this.studentForm.value);
 		}
   }
 
@@ -98,10 +100,13 @@ export class EditCreateStudentComponent implements OnInit {
 
     this.loadingSpinner = true;
 		if(this.isEditing) {
-			await this.studentsService.updateStudent(studentData)
+			await this.studentsService.updateStudent({...studentData, dataNascimento: moment(studentData.dataNascimento).format('DD/MM/YYYY')});
+			// if(this.studentClone.turma != this.studentForm.get('turma')?.value) {
+			// 	await this.studentsService.addStudentToClass({matricula: studentData.matricula, numeroTurma: this.studentForm.get('turma')?.value});
+			// }
 		}
 		else {
-			await this.studentsService.createStudent(studentData)
+			await this.studentsService.createStudent({...studentData, dataNascimento: moment(studentData.dataNascimento).format('DD/MM/YYYY')})
 			await this.studentsService.addStudentToClass({matricula: studentData.matricula, numeroTurma: this.studentForm.get('turma')?.value});
 		}
     this.loadingSpinner = false;

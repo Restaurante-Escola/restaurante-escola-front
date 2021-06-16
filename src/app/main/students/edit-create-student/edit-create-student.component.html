@@ -62,9 +62,14 @@
         </div>
 
         <div class='col-md-6'>
-          <mat-form-field class="field">
-            <mat-label>Data de nascimento</mat-label>
-            <input matInput formControlName="dataNascimento" mask="00/00/0000" [dropSpecialCharacters]="false">
+					<mat-form-field class="field">
+						<mat-label>Data de nascimento</mat-label>
+						<input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+						<mat-error *ngIf="studentForm.get('dataNascimento')?.hasError('required')">
+              Data de nascimento é <strong>obrigatório</strong>
+            </mat-error>
           </mat-form-field>
         </div>
 

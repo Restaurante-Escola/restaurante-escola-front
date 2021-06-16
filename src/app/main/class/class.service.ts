@@ -15,14 +15,15 @@ export class ClassService {
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
-  async deleteClass(codigo: any) {
-    let response: any = await this.httpClient.delete(`${environment.api_url}/turmas/${codigo}`).toPromise();
+  async deleteClass(numero: any) {
+    let response: any = await this.httpClient.delete(`${environment.api_url}/turmas/${numero}`).toPromise();
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
   async updateClass(classData: any) {
-    
-    let response: any = await this.httpClient.put(`${environment.api_url}/turmas/${classData.codigo}`, classData).toPromise();
+    console.log("classData", classData);
+		
+    let response: any = await this.httpClient.put(`${environment.api_url}/turmas/${classData.numero}`, classData).toPromise();
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
@@ -35,8 +36,8 @@ export class ClassService {
 		let formClass = {
 			numero: classData.numero,
 			codigo: classData.codigo,
-      inicioTurma: moment(classData.inicioTurma).format("DD/MM/YYYY"),
-      fimTurma: moment(classData.fimTurma).format("DD/MM/YYYY"),
+      inicioTurma: moment(classData.inicioTurma).format(),
+      fimTurma: moment(classData.fimTurma).format(),
     };
 
     return formClass;

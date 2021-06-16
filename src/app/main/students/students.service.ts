@@ -75,7 +75,7 @@ export class StudentsService {
       nomeSocial: student.nomeSocial,
       idade: student.idade,
       estadoCivil: student.estadoCivil,
-      dataNascimento: moment(student.dataNascimento).format("DD/MM/YYYY"),
+      dataNascimento: moment(student.dataNascimento).format(),
       rg: student.rg,
       cpf: student.cpf,
       telefoneCelular: student.telefoneCelular,

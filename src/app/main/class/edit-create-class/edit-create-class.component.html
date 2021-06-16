@@ -19,22 +19,35 @@
         </div>
 
         <div class='col-md-6'>
-          <mat-form-field class="field">
-            <mat-label>Data de início da turma</mat-label>
-            <input matInput formControlName="inicioTurma" mask="00/00/0000" [dropSpecialCharacters]="false">
-            <mat-error *ngIf="classForm.get('inicioTurma')?.hasError('required')">
+					<mat-form-field class="field">
+						<mat-label>Data de início da turma</mat-label>
+						<input matInput [matDatepicker]="picker1" formControlName="inicioTurma">
+						<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+						<mat-datepicker #picker1></mat-datepicker>
+						<mat-error *ngIf="classForm.get('inicioTurma')?.hasError('required')">
               Data de início é <strong>obrigatório</strong>
             </mat-error>
-          </mat-form-field>
+					</mat-form-field>
+
+          <!-- <mat-form-field >
+            <mat-label></mat-label>
+            <input matInput  mask="00/00/0000" [dropSpecialCharacters]="false">
+            
+          </mat-form-field> -->
         </div>
         
         <div class='col-md-6'>
           <mat-form-field class="field">
-            <mat-label>Data de fim da turma</mat-label>
-            <input matInput formControlName="fimTurma" mask="00/00/0000" [dropSpecialCharacters]="false">
-            <mat-error *ngIf="classForm.get('fimTurma')?.hasError('required')">
+						<mat-label>Data de fim da turma</mat-label>
+						<input matInput [matDatepicker]="picker2" formControlName="fimTurma">
+						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+						<mat-datepicker #picker2></mat-datepicker>
+						<mat-error *ngIf="classForm.get('fimTurma')?.hasError('required')">
               Data de fim é <strong>obrigatório</strong>
             </mat-error>
+
+            <!-- <mat-label></mat-label>
+            <input matInput formControlName="fimTurma" mask="00/00/0000" [dropSpecialCharacters]="false"> -->
           </mat-form-field>
         </div>
       </div>

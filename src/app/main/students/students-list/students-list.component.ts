@@ -18,12 +18,12 @@ export class StudentsListComponent implements OnInit {
   dataSource: any = [];
   loading: boolean = true;
   students: any = [];
-  classCode: any;
+  classNumber: any;
 
   constructor(private studentsService: StudentsService, public dialog: MatDialog,  public route: ActivatedRoute) { 
     this.route.paramMap.subscribe( paramMap => {
-      this.classCode = paramMap.get('codigoTurma');
-  });
+      this.classNumber = paramMap.get('numeroTurma');
+  	});
   }
 
   ngOnInit(): void {
@@ -35,13 +35,12 @@ export class StudentsListComponent implements OnInit {
 
 	async getStudents(){
 		this.loading = true;
-    if(this.classCode) {
-      console.log('with code')
-      this.students = await this.studentsService.getStudentsFromClass(this.classCode);
-    } else {
-      this.students = await this.studentsService.getStudents();
+		this.students = await this.studentsService.getStudents();
+    if(this.classNumber) {
+      console.log('with code', this.classNumber)
+      this.students = this.students.filter((student: any) => student.numeroTurma == this.classNumber);
     }
-		console.log("x", this.students, this.classCode);
+		console.log("x", this.students, this.classNumber);
 		this.dataSource = new MatTableDataSource(this.students);
 		this.displayedColumns = ['icon', 'name', 'cpf', 'class', 'email', 'cellphone'];
 		this.loading = false;

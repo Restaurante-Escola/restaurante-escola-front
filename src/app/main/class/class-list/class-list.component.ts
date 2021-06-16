@@ -81,7 +81,7 @@ export class ClassListComponent implements OnInit {
 
     if(result) {
       this.loading = true;
-      let deleted: any = await this.classService.deleteClass(classToDelete.codigo);
+      let deleted: any = await this.classService.deleteClass(classToDelete.numero);
 
       if(deleted) {
         this.getClass();
@@ -91,6 +91,6 @@ export class ClassListComponent implements OnInit {
 
   async listStudents(classData: any) {
     console.log('class', classData)
-    this.router.navigateByUrl(`/alunos/${classData.codigo}`);
+    this.router.navigateByUrl(`/alunos/${classData.numero}`);
   }
 }

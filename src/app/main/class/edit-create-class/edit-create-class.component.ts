@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ClassService } from '../class.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-edit-create-class',
   templateUrl: './edit-create-class.component.html',
@@ -43,11 +43,14 @@ export class EditCreateClassComponent implements OnInit {
     }
 
     this.loadingSpinner = true;
+		let inicioTurma = moment(this.classForm.get('inicioTurma')?.value).format('DD/MM/YYYY');
+		let fimTurma = moment(this.classForm.get('fimTurma')?.value).format('DD/MM/YYYY');
+
 		if(this.isEditing) {
-			savedClass = await this.classService.updateClass(this.classForm.value)
+			savedClass = await this.classService.updateClass({...this.classForm.value, inicioTurma, fimTurma});
 		}
 		else {
-			savedClass = await this.classService.createClass(this.classForm.value)
+			savedClass = await this.classService.createClass({...this.classForm.value, inicioTurma, fimTurma});
 		}
     this.loadingSpinner = false;
 
