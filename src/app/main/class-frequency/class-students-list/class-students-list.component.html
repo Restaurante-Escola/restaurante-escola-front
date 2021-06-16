@@ -65,7 +65,7 @@
 			<ng-container matColumnDef="numeroFaltas">
 				<mat-header-cell *matHeaderCellDef>Qtnd. Faltas</mat-header-cell>
 				<mat-cell *matCellDef="let student">
-					{{student.frequencias ? student.frequencias.length : '-'}}
+					{{student.frequencias ? getFrequenciasLength(student.frequencias) : '-'}}
 				</mat-cell>
 			</ng-container>
 

@@ -164,7 +164,10 @@ export class ClassStudentsListComponent implements OnInit {
   }
 
   adjustData(): string {
-    console.log(this.inputDatePicker.nativeElement.value)
     return this.inputDatePicker.nativeElement.value
+  }
+
+  getFrequenciasLength(frequencias: []) {
+    return frequencias.filter((freq: any) => freq.status !== 'INTEGRAL').length
   }
 }
