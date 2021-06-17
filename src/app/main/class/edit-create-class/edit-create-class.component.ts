@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ClassService } from '../class.service';
 import * as moment from 'moment';
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-edit-create-class',
   templateUrl: './edit-create-class.component.html',
@@ -18,7 +19,8 @@ export class EditCreateClassComponent implements OnInit {
   constructor(
 		public dialogRef: MatDialogRef<EditCreateClassComponent>,
 		@Inject(MAT_DIALOG_DATA) public classData: any,
-		private classService: ClassService
+		private classService: ClassService,
+		private _snackBar: MatSnackBar
 	) { }
 
   ngOnInit(): void {
@@ -48,9 +50,21 @@ export class EditCreateClassComponent implements OnInit {
 
 		if(this.isEditing) {
 			savedClass = await this.classService.updateClass({...this.classForm.value, inicioTurma, fimTurma});
+			this._snackBar.open('Classe atualizada com sucesso!', '', {
+				duration: 6000,
+				verticalPosition: "top",
+				horizontalPosition: "right",
+				panelClass: 'snack-bar-success'
+			});
 		}
 		else {
 			savedClass = await this.classService.createClass({...this.classForm.value, inicioTurma, fimTurma});
+			this._snackBar.open('Classe criada com sucesso!', '', {
+				duration: 6000,
+				verticalPosition: "top",
+				horizontalPosition: "right",
+				panelClass: 'snack-bar-success'
+			});
 		}
     this.loadingSpinner = false;
 

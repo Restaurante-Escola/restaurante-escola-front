@@ -35,6 +35,22 @@ body { margin: 0; background-color: #eef5f9; font-family: Roboto, "Helvetica Neu
 	}
 }
 
+.snack-bar-danger{
+  background-color: rgba(243,67,59) !important;
+  color: #FFF !important;
+  .mat-simple-snackbar-action {
+    color: #FFF !important;
+  }
+}
+
+.snack-bar-success{
+	background-color: #d4edda !important;
+	color: #155724 !important;
+	.mat-simple-snackbar-action {
+		color: #155724 !important;
+	}
+}
+
 .no-content {
   display: flex;
   align-items: center;

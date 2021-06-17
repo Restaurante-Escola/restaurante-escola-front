@@ -39,6 +39,10 @@
   stroke: #FFF;
 }
 
+::ng-deep .mat-simple-snackbar {
+  justify-content: center !important;
+}
+
 .login-button {
   display: flex;
   justify-content: center;

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { ClassFrequencyService } from '../class-frequency.service';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 enum StatusFrequencia {
   "INTEGRAL",
@@ -27,7 +28,8 @@ export class ClassStudentsListComponent implements OnInit {
   isEditing: boolean = false
 
   constructor(
-    private classFrequencyService: ClassFrequencyService
+    private classFrequencyService: ClassFrequencyService,
+		private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -111,6 +113,13 @@ export class ClassStudentsListComponent implements OnInit {
 
       this.registrarFrequenciaAluno(aluno.matricula, aluno.status, aluno?.codigo)
     })
+
+		this._snackBar.open('Presenças registradas com sucesso', '', {
+			duration: 6000,
+			verticalPosition: "top",
+			horizontalPosition: "right",
+			panelClass: 'snack-bar-success'
+		});
   }
 
   registrarFrequenciaAluno(matricula: number, status: string, codigo: number) {

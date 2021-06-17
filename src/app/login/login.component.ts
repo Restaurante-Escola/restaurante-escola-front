@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication/service/authentication.service';
-
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService : AuthenticationService,
-    private router: Router
+    private router: Router,
+		private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -34,6 +35,12 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("/alunos");
     }
     catch(e){
+			this._snackBar.open('Credenciais inválidas', '', {
+				duration: 6000,
+				verticalPosition: "top",
+				horizontalPosition: "right",
+				panelClass: 'snack-bar-danger'
+			});
       console.log("credenciais zoadas", e);
     }
     this.loading = false;

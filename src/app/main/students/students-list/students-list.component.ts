@@ -5,7 +5,7 @@ import { StudentsService } from '../students.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { ActivatedRoute } from '@angular/router';
-
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { OccurenceAdvertenceComponent } from '../occurence-advertence/occurence-advertence.component';
 @Component({
   selector: 'app-students-list',
@@ -20,7 +20,7 @@ export class StudentsListComponent implements OnInit {
   students: any = [];
   classNumber: any;
 
-  constructor(private studentsService: StudentsService, public dialog: MatDialog,  public route: ActivatedRoute) { 
+  constructor(private studentsService: StudentsService, public dialog: MatDialog,  private _snackBar: MatSnackBar, public route: ActivatedRoute) { 
     this.route.paramMap.subscribe( paramMap => {
       this.classNumber = paramMap.get('numeroTurma');
   	});
@@ -124,6 +124,12 @@ export class StudentsListComponent implements OnInit {
       let deleted: any = await this.studentsService.deleteStudent(student.matricula);
 
       if(deleted) {
+				this._snackBar.open('Aluno deletado com sucesso', '', {
+					duration: 6000,
+					verticalPosition: "top",
+					horizontalPosition: "right",
+					panelClass: 'snack-bar-success'
+				});
         this.getStudents();
       }
     }

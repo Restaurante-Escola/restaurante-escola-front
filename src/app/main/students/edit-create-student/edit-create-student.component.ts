@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { StudentsService } from '../students.service';
 import * as moment from 'moment';
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-edit-create-student',
   templateUrl: './edit-create-student.component.html',
@@ -34,7 +35,8 @@ export class EditCreateStudentComponent implements OnInit {
   constructor(
 		public dialogRef: MatDialogRef<EditCreateStudentComponent>,
 		@Inject(MAT_DIALOG_DATA) public student: any,
-		private studentsService: StudentsService
+		private studentsService: StudentsService,
+		private _snackBar: MatSnackBar
 	) { }
 
   ngOnInit(): void {
@@ -104,10 +106,22 @@ export class EditCreateStudentComponent implements OnInit {
 			// if(this.studentClone.turma != this.studentForm.get('turma')?.value) {
 			// 	await this.studentsService.addStudentToClass({matricula: studentData.matricula, numeroTurma: this.studentForm.get('turma')?.value});
 			// }
+			this._snackBar.open('Aluno atualizado com sucesso!', '', {
+				duration: 6000,
+				verticalPosition: "top",
+				horizontalPosition: "right",
+				panelClass: 'snack-bar-success'
+			});
 		}
 		else {
 			await this.studentsService.createStudent({...studentData, dataNascimento: moment(studentData.dataNascimento).format('DD/MM/YYYY')})
 			await this.studentsService.addStudentToClass({matricula: studentData.matricula, numeroTurma: this.studentForm.get('turma')?.value});
+			this._snackBar.open('Aluno criado com sucesso!', '', {
+				duration: 6000,
+				verticalPosition: "top",
+				horizontalPosition: "right",
+				panelClass: 'snack-bar-success'
+			});
 		}
     this.loadingSpinner = false;
 

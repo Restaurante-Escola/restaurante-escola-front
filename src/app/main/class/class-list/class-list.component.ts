@@ -5,7 +5,7 @@ import { ClassService } from '../class.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-class-list',
   templateUrl: './class-list.component.html',
@@ -21,7 +21,8 @@ export class ClassListComponent implements OnInit {
   constructor(
     private classService: ClassService, 
     public dialog: MatDialog,     
-    private router: Router
+    private router: Router,
+		private _snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -84,6 +85,12 @@ export class ClassListComponent implements OnInit {
       let deleted: any = await this.classService.deleteClass(classToDelete.numero);
 
       if(deleted) {
+				this._snackBar.open('Turma deletada com sucesso!', '', {
+					duration: 6000,
+					verticalPosition: "top",
+					horizontalPosition: "right",
+					panelClass: 'snack-bar-success'
+				});
         this.getClass();
       }
     }

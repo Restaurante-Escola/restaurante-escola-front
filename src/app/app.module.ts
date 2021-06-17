@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 		MatFormFieldModule,
 		MatProgressSpinnerModule,
 		ReactiveFormsModule,
-		FormsModule
+		FormsModule,
+		MatSnackBarModule
   ],
   providers: [
 		{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
