@@ -11,6 +11,7 @@ O Projeto Restaurante-escola “Estação Bistrô” é desenvolvido pela Socied
 - Git
 - Java
 - Springboot
+- Flutter
 
 ## Documentação
 A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, podem ser encontrados na nossa [wiki](https://github.com/Restaurante-Escola/restaurante-escola-api/wiki/Documenta%C3%A7%C3%A3o)
@@ -28,3 +29,6 @@ A documentação mais detalhada com BPMN, diagramas, regras de negócio, etc, po
 
 ## Repositório do Back-end
 https://github.com/Restaurante-Escola/restaurante-escola-api
+
+## Repositório do Mobile
+https://github.com/Restaurante-Escola/restaurante-escola-mobile
