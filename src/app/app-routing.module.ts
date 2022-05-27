@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from './authentication/guard/authentication.guard';
 import { LoginComponent } from './login/login.component';
+import { DocumentsComponent } from './main/documents/documents.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
 				path: "frequencia", 
 				loadChildren: () => import('./main/class-frequency/class-frequency.module').then(m => m.ClassFrequencyModule),
 			},
+			{
+				path: "documentos",
+				component: DocumentsComponent
+			}
 		],
     canActivate: [AuthenticationGuard] 
 	},

@@ -3,6 +3,7 @@
   <a mat-button [routerLink]="['/alunos']" routerLinkActive #students="routerLinkActive" [ngClass]='{"activated" : students.isActive}' [routerLinkActiveOptions]="{ exact: true }">Alunos</a>
   <a mat-button [routerLink]="['/turmas']" routerLinkActive #classes="routerLinkActive" [ngClass]='{"activated" : classes.isActive}'>Turmas</a>
   <a mat-button [routerLink]="['/frequencia']" routerLinkActive #frequencia="routerLinkActive" [ngClass]='{"activated" : frequencia.isActive}'>Frequência</a>
+  <a mat-button [routerLink]="['/documentos']" routerLinkActive #documentos="routerLinkActive" [ngClass]='{"activated" : documentos.isActive}'>Documentos</a>
   <a mat-button [routerLink]="['/configuracoes']" routerLinkActive #config="routerLinkActive" [ngClass]='{"activated" : config.isActive}'>Configurações</a>
   <a mat-button (click)='logout()'>Sair</a>
   <span class="example-spacer"></span>

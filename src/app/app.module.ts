@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {MatSelectModule} from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,12 +17,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DocumentsComponent } from './main/documents/documents.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ConfirmDialogComponent,
-    LoginComponent
+    LoginComponent,
+    DocumentsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 		MatProgressSpinnerModule,
 		ReactiveFormsModule,
 		FormsModule,
-		MatSnackBarModule
+		MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [
 		{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
