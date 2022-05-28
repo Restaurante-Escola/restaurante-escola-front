@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { StudentsService } from '../students/students.service';
+import { DocumentsService } from './documents.service';
 
-interface Aluno {
-  name: string;
-  CPF: string;
-}
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
@@ -12,17 +11,11 @@ interface Aluno {
 })
 export class DocumentsComponent implements OnInit {
 
-  constructor() { }
+  Students: any = [];
 
-  ngOnInit(): void {
+  constructor(private studentsService: StudentsService) { }
+
+  async ngOnInit() {
+    this.Students = await this.studentsService.getStudents();
   }
-
-  studentControl = new FormControl('', Validators.required);
-  selectFormControl = new FormControl('', Validators.required);
-  students: Aluno[] = [
-    {name: 'Edu', CPF: '47046209804'},
-    {name: 'Pablo', CPF: '58789632558'},
-    {name: 'Douglas', CPF: '02687499639'},
-  ];
-
 }
