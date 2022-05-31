@@ -5,15 +5,29 @@
 	</div>
 </div>
 
-<div class="example-container mat-elevation-z8" style='margin: 32px 0; border-radius: 15px;'>
-	
-    <mat-form-field appearance="fill" style="margin-left: 1%; margin-top: 1%; margin-bottom: 1%;">
+<form [formGroup]="form">
+  <div class="example-container mat-elevation-z8" style='margin: 32px 0; border-radius: 15px; flex-direction: row; display: flex; background-color: white;'>
+    <div style="flex: 15%;">
+      <mat-form-field appearance="fill" style="margin-left: 10%; margin-top: 7%; margin-bottom: 1%;">
         <mat-label>Selecione o aluno</mat-label>
-        <mat-select>
+        <mat-select formControlName="student">
           <mat-option>--</mat-option>
-          <mat-option *ngFor="let aluno of Students">
+          <mat-option  *ngFor="let aluno of Students" [value]="aluno.matricula">
             {{aluno.nome}}
           </mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
+    </div>
+
+    <div style="flex: 80%; margin-right: 1%; margin-left: 3%;">
+      <label id="example-radio-group-label" class="example-radio-group-label">Selecione um documento:</label>
+      <mat-radio-group class="example-radio-group" formControlName="document"  >
+        <mat-radio-button class="rd-button" *ngFor="let doc of docs" [value]="doc.value">{{doc.label}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</form>
+
+<div>
+  <button mat-flat-button color="primary" class="header-button" (click)='createDocument()'>Gerar Documento</button>
 </div>

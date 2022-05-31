@@ -18,13 +18,16 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DocumentsComponent } from './main/documents/documents.component';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ConfirmDialogComponent,
     LoginComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +42,13 @@ import { DocumentsComponent } from './main/documents/documents.component';
 		ReactiveFormsModule,
 		FormsModule,
 		MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule,
   ],
   providers: [
 		{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-		{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true },
+    { provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'primary' },}
 	],
   bootstrap: [AppComponent]
 })

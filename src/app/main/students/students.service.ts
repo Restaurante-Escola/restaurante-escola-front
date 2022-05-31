@@ -68,6 +68,10 @@ export class StudentsService {
     let response: any = await this.httpClient.delete(`${environment.api_url}/ocorrencias/${codigo}`).toPromise();
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
+	async getStudentById(matricula: number) {
+    let response: any = await this.httpClient.get(`${environment.api_url}/alunos/${matricula}`).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
 
 	studentToForm(student: any){
 		let formStudent = {

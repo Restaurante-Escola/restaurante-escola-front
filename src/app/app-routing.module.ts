@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from './authentication/guard/authentication.guard';
 import { LoginComponent } from './login/login.component';
 import { DocumentsComponent } from './main/documents/documents.component';
+import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
@@ -22,7 +23,12 @@ const routes: Routes = [
 			},
 			{
 				path: "documentos",
-				component: DocumentsComponent
+				component: DocumentsComponent,
+				
+			},
+			{
+				path: "ficha-cadastral/:studentId",
+				component: RegistrationFormComponent
 			}
 		],
     canActivate: [AuthenticationGuard] 

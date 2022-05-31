@@ -44,7 +44,7 @@ export class StudentsListComponent implements OnInit {
 		this.dataSource = new MatTableDataSource(this.students);
 		this.displayedColumns = ['icon', 'name', 'cpf', 'class', 'email', 'cellphone'];
 		this.loading = false;
-  }
+  	}
 
 	async studentAdvertence(student: any){
 		const dialogRef = this.dialog.open(OccurenceAdvertenceComponent, {
