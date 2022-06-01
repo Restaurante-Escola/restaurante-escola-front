@@ -20,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DocumentsComponent } from './main/documents/documents.component';
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
+import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { RegistrationFormComponent } from './main/documents/registration-form/re
     ConfirmDialogComponent,
     LoginComponent,
     DocumentsComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    EnrollmentDeclarationComponent
   ],
   imports: [
     BrowserModule,

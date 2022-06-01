@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from './authentication/guard/authentication.guard';
 import { LoginComponent } from './login/login.component';
 import { DocumentsComponent } from './main/documents/documents.component';
+import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
 import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 import { MainComponent } from './main/main.component';
 
@@ -29,6 +30,10 @@ const routes: Routes = [
 			{
 				path: "ficha-cadastral/:studentId",
 				component: RegistrationFormComponent
+			},
+			{
+				path: "declaracao-matricula/:studentId",
+				component: EnrollmentDeclarationComponent
 			}
 		],
     canActivate: [AuthenticationGuard] 

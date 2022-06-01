@@ -25,21 +25,19 @@ export class DocumentsComponent implements OnInit {
   ];
   selectedValue: any;
   form!: FormGroup;
+  
 
   constructor(private studentsService: StudentsService, private router: Router) { 
     this.form = new FormGroup({
     student : new FormControl(''),
-    document : new FormControl('')
+    document : new FormControl(''),
   });}
 
   async ngOnInit() {
-    this.Students = await this.studentsService.getStudents();
+    this.Students = await this.studentsService.getStudents(); 
   }
 
   async createDocument(){
-
     this.router.navigate([`${this.form.get("document")?.value}/${this.form.get("student")?.value}`])
-
-      
   }
 }
