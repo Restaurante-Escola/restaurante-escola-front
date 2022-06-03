@@ -4,6 +4,7 @@ import { AuthenticationGuard } from './authentication/guard/authentication.guard
 import { LoginComponent } from './login/login.component';
 import { DocumentsComponent } from './main/documents/documents.component';
 import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
+import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-unisantos.component';
 import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 import { MainComponent } from './main/main.component';
 
@@ -26,18 +27,13 @@ const routes: Routes = [
 				path: "documentos",
 				component: DocumentsComponent,
 				
-			},
-			{
-				path: "ficha-cadastral/:studentId",
-				component: RegistrationFormComponent
-			},
-			{
-				path: "declaracao-matricula/:studentId",
-				component: EnrollmentDeclarationComponent
 			}
 		],
     canActivate: [AuthenticationGuard] 
 	},
+	{path: "ficha-cadastral/:studentId", component: RegistrationFormComponent},
+	{path: "imagem-unisantos/:studentId", component: ImageUnisantosComponent},
+	{path: "declaracao-matricula/:studentId", component: EnrollmentDeclarationComponent},
 	{ path: "login", component: LoginComponent }
 ];
 

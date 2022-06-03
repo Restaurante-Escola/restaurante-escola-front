@@ -21,6 +21,7 @@ import { DocumentsComponent } from './main/documents/documents.component';
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
+import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-unisantos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { EnrollmentDeclarationComponent } from './main/documents/enrollment-decl
     LoginComponent,
     DocumentsComponent,
     RegistrationFormComponent,
-    EnrollmentDeclarationComponent
+    EnrollmentDeclarationComponent,
+    ImageUnisantosComponent
   ],
   imports: [
     BrowserModule,
