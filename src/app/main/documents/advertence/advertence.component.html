@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>""</title>
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <section>
+        <header class="centralizar">
+            <div>
+                <h2>DECLARAÇÃO DE ADVERTÊNCIA</h2>
+                <br/>
+            </div>
+        </header>
+        <div>
+            <h3>Santos {{today | date:"longDate"}}</h3>
+            <br>
+            <p class="centralizar">Através deste termo, informamos que o(a) aluno(a) {{studentData?.nome}} está sendo advertido(a) pelo(s) seguinte(s) motivo(s):</p>
+            <br>
+            <p *ngFor="let advertence of studentAdvertences">{{advertence?.descricao}}</p>
+            <br/>
+            <p class="centralizar">Esclarecemos que a reincidência em procedimentos semelhantes, 
+                poderá causar uma suspensão disciplinar ou até mesmo a exclusão deste 
+                curso vigente.</p>  
+            <br>
+        </div>
+        <div class="centralizar">
+            <p>______________________________</p>
+            <p>{{studentData?.nome}}</p>
+            <p><b>Aluno</b></p>
+            <br>
+            <p>______________________________</p>
+            <p><b>Instrutor (a) - Restaurante-Escola</b></p>
+            <br>
+            <p>______________________________</p>
+            <p><b>Anderson Santana</b></p>
+            <p><b>Coordenador</b></p>
+            <br>
+            <h5>Restaurante-Escola – Estação Bistrô</h5>
+            <h5><b>Pça Marques de Monte Alegre s/n – Valongo – Santos, SP</b></h5>
+        </div>
+    </section>
+</body>
+</html>

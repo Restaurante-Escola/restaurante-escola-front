@@ -32,6 +32,11 @@ export class ClassService {
     return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
   }
 
+  async getClassById(id: number) {
+    let response: any = await this.httpClient.get(`${environment.api_url}/turmas/${id}`).toPromise();
+    return response || []; //TODO throw exception when the statusCode it's not 200 or the response is null
+  }
+
 	classToForm(classData: any){
 		let formClass = {
 			numero: classData.numero,

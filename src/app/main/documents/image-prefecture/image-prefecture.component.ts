@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { StudentsService } from '../../students/students.service';
 
 @Component({
-  selector: 'app-image-unisantos',
-  templateUrl: './image-unisantos.component.html',
-  styleUrls: ['./image-unisantos.component.scss']
+  selector: 'app-image-prefecture',
+  templateUrl: './image-prefecture.component.html',
+  styleUrls: ['./image-prefecture.component.scss']
 })
-export class ImageUnisantosComponent implements OnInit {
+export class ImagePrefectureComponent implements OnInit {
 
   studentId: any;
   studentData: any;
@@ -21,10 +21,6 @@ export class ImageUnisantosComponent implements OnInit {
   async ngOnInit(){
     this.studentData = await this.studentsService.getStudentById(this.studentId);
     this.today = new Date();
-    console.log(
-      this.studentId,
-      this.studentData,
-    );
     
   }
 

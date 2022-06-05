@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,12 @@ import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/rad
 import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
 import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-unisantos.component';
+import { ImagePrefectureComponent } from './main/documents/image-prefecture/image-prefecture.component';
+import { AdvertenceComponent } from './main/documents/advertence/advertence.component';
+import { ConclusionComponent } from './main/documents/conclusion/conclusion.component';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,10 @@ import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-
     DocumentsComponent,
     RegistrationFormComponent,
     EnrollmentDeclarationComponent,
-    ImageUnisantosComponent
+    ImageUnisantosComponent,
+    ImagePrefectureComponent,
+    AdvertenceComponent,
+    ConclusionComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,8 @@ import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-
   providers: [
 		{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true },
-    { provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'primary' },}
+    { provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'primary' },},
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
 	],
   bootstrap: [AppComponent]
 })

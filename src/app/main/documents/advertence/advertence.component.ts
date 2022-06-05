@@ -3,15 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { StudentsService } from '../../students/students.service';
 
 @Component({
-  selector: 'app-image-unisantos',
-  templateUrl: './image-unisantos.component.html',
-  styleUrls: ['./image-unisantos.component.scss']
+  selector: 'app-advertence',
+  templateUrl: './advertence.component.html',
+  styleUrls: ['./advertence.component.scss']
 })
-export class ImageUnisantosComponent implements OnInit {
-
+export class AdvertenceComponent implements OnInit {
+  
+  studentAdvertences: any;
   studentId: any;
   studentData: any;
   today: any;
+
   constructor(private route: ActivatedRoute, private studentsService: StudentsService ) { 
     this.route.paramMap.subscribe( paramMap => {
       this.studentId = paramMap.get('studentId');
@@ -20,12 +22,8 @@ export class ImageUnisantosComponent implements OnInit {
 
   async ngOnInit(){
     this.studentData = await this.studentsService.getStudentById(this.studentId);
-    this.today = new Date();
-    console.log(
-      this.studentId,
-      this.studentData,
-    );
-    
+    this.studentAdvertences = await this.studentsService.getAdvertences(this.studentId);
+    this.today = new Date();  
   }
 
 }
