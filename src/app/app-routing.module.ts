@@ -4,6 +4,7 @@ import { AuthenticationGuard } from './authentication/guard/authentication.guard
 import { LoginComponent } from './login/login.component';
 import { AdvertenceComponent } from './main/documents/advertence/advertence.component';
 import { ConclusionComponent } from './main/documents/conclusion/conclusion.component';
+import { DismissalComponent } from './main/documents/dismissal/dismissal.component';
 import { DocumentsComponent } from './main/documents/documents.component';
 import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
 import { ImagePrefectureComponent } from './main/documents/image-prefecture/image-prefecture.component';
@@ -40,7 +41,8 @@ const routes: Routes = [
 	{path: "advertencia/:studentId", component: AdvertenceComponent},
 	{path: "declaracao-matricula/:studentId", component: EnrollmentDeclarationComponent},
 	{path: "conclusao/:studentId", component: ConclusionComponent},
-	{ path: "login", component: LoginComponent }
+	{path: "desligamento/:studentId", component: DismissalComponent},
+	{path: "login", component: LoginComponent}
 ];
 
 @NgModule({

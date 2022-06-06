@@ -27,6 +27,7 @@ import { AdvertenceComponent } from './main/documents/advertence/advertence.comp
 import { ConclusionComponent } from './main/documents/conclusion/conclusion.component';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { DismissalComponent } from './main/documents/dismissal/dismissal.component';
 registerLocaleData(localePt);
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ registerLocaleData(localePt);
     ImageUnisantosComponent,
     ImagePrefectureComponent,
     AdvertenceComponent,
-    ConclusionComponent
+    ConclusionComponent,
+    DismissalComponent
   ],
   imports: [
     BrowserModule,
