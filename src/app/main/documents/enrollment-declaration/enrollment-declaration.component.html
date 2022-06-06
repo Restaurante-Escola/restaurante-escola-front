@@ -1,21 +1,38 @@
-
-<div>
-    <img src="">
-</div>
-
-<div>
-    <p>Eu {{studentData?.nome}} , portador da Carteira de Identidade/RG {{studentData?.rg}} e inscrito no CPF/MF sob nº {{studentData?.cpf}} cedo o direito
-        de uso da minha imagem e/ou som de minha voz à Universidade Católica de Santos para produção de material de divulgação da instituição.
-    </p>
-    <p>A presente autorização abrange o uso acima indicado tanto em mídia impressa, eletrônica, Internet e demais meios de comunicação, 
-        para apresentação institucional em feiras, eventos acadêmicos, cursos e quaisquer outros meios de reprodução e comercialização, 
-        sem qualquer ônus ao efetivo registro.
-    </p>
-    <p>O material que venha a ser produzido poderá ser utilizado em qualquer idioma, por tempo indeterminado, em território nacional e no exterior, 
-        e em qualquer das ações com ou sem finalidade lucrativa, pertencentes à Universidade Católica de Santos.
-    </p>
-    <p>E, por estar de acordo com os termos e condições descritos acima, assino a presente autorização.</p>
-
-    <p>Santos {{today | date:"longDate"}}</p>
-         
-</div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>""</title>
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <section>
+        <header class="centralizar">
+            <div>
+                <h1>DECLARAÇÃO</h1>
+                <br/>
+            </div>
+        </header>
+        <div>
+            <br>
+            <p>Declaramos que {{studentData?.nome}} está em período de formação no curso 
+                de Organização em Alimentos e Bebidas do Restaurante-Escola 
+                Estação Bistrô com experiências em cozinha quente e fria, 
+                confeitaria, bar e atendimento ao cliente (salão), aulas 
+                teóricas e práticas. Iniciado em {{classData?.inicioTurma | date: "longDate"}} com previsão de 
+                término em {{classData?.fimTurma | date: "longDate"}} , com a carga horária de 1.546 horas, 
+                de terça a sábado das 8h às 17h.</p>
+            <br/>
+        </div>
+        <div class="centralizar">
+            <h3>Santos {{today | date:"longDate"}}</h3>
+            <br>
+            <p>______________________________</p>
+            <p><b>Anderson Santana</b></p>
+            <p><b>Coordenador</b></p>
+            <br>
+            <h5>Restaurante-Escola – Estação Bistrô</h5>
+            <h5><b>Pça Marques de Monte Alegre s/n – Valongo – Santos, SP</b></h5>
+        </div>
+    </section>
+</body>
+</html>
