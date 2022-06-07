@@ -11,6 +11,7 @@ import { StudentsService } from '../../students/students.service';
 export class DismissalComponent implements OnInit {
 
   today: any;
+  studentAdvertences: any;
   studentId: any;
   studentData: any;
   classData: any;
@@ -23,6 +24,7 @@ export class DismissalComponent implements OnInit {
   async ngOnInit(){
     this.studentData = await this.studentsService.getStudentById(this.studentId);
     this.classData = await this.classService.getClassById(this.studentData.numeroTurma);
+    this.studentAdvertences = await this.studentsService.getAdvertences(this.studentId);
     this.today = new Date();
   }
 

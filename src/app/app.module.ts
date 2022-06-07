@@ -28,6 +28,7 @@ import { ConclusionComponent } from './main/documents/conclusion/conclusion.comp
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { DismissalComponent } from './main/documents/dismissal/dismissal.component';
+import { PPEUniformComponent } from './main/documents/ppe-uniform/ppe-uniform.component';
 registerLocaleData(localePt);
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ registerLocaleData(localePt);
     ImagePrefectureComponent,
     AdvertenceComponent,
     ConclusionComponent,
-    DismissalComponent
+    DismissalComponent,
+    PPEUniformComponent
   ],
   imports: [
     BrowserModule,

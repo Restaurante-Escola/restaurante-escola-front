@@ -16,11 +16,11 @@
             <h3>Santos {{today | date:"longDate"}}</h3>
             <p>Através deste termo, informamos que o (a) aluno (a) 
                 {{studentData?.nome}} está DESLIGADO (a) do projeto a 
-                partir desta data pelo (s) seguinte (s) motivo (s):</p>
+                partir desta data pelo(s) seguinte(s) motivo(s):</p>
             <br/>
             <table cellspacing ="0" cellpadding="3" border = "1">
                 <tr>
-                    <td width="920px" height = "110px"><b>****(Escrever o motivo)</b></td>
+                    <td width="920px" height = "110px"><b> <p  class="centralizar" *ngFor="let advertence of studentAdvertences">{{advertence?.descricao}}</p></b></td> <!-- Falta implmentar, por enquanto esta trazendo advertencias-->
                 </tr>
             </table>
             <br>

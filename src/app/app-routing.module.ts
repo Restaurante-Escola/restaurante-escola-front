@@ -9,6 +9,7 @@ import { DocumentsComponent } from './main/documents/documents.component';
 import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
 import { ImagePrefectureComponent } from './main/documents/image-prefecture/image-prefecture.component';
 import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-unisantos.component';
+import { PPEUniformComponent } from './main/documents/ppe-uniform/ppe-uniform.component';
 import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
 import { MainComponent } from './main/main.component';
 
@@ -42,6 +43,7 @@ const routes: Routes = [
 	{path: "declaracao-matricula/:studentId", component: EnrollmentDeclarationComponent},
 	{path: "conclusao/:studentId", component: ConclusionComponent},
 	{path: "desligamento/:studentId", component: DismissalComponent},
+	{path: "epi-uniforme/:studentId", component: PPEUniformComponent},
 	{path: "login", component: LoginComponent}
 ];
 
