@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,12 +17,34 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DocumentsComponent } from './main/documents/documents.component';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { RegistrationFormComponent } from './main/documents/registration-form/registration-form.component';
+import { EnrollmentDeclarationComponent } from './main/documents/enrollment-declaration/enrollment-declaration.component';
+import { ImageUnisantosComponent } from './main/documents/image-unisantos/image-unisantos.component';
+import { ImagePrefectureComponent } from './main/documents/image-prefecture/image-prefecture.component';
+import { AdvertenceComponent } from './main/documents/advertence/advertence.component';
+import { ConclusionComponent } from './main/documents/conclusion/conclusion.component';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { DismissalComponent } from './main/documents/dismissal/dismissal.component';
+import { PPEUniformComponent } from './main/documents/ppe-uniform/ppe-uniform.component';
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ConfirmDialogComponent,
-    LoginComponent
+    LoginComponent,
+    DocumentsComponent,
+    RegistrationFormComponent,
+    EnrollmentDeclarationComponent,
+    ImageUnisantosComponent,
+    ImagePrefectureComponent,
+    AdvertenceComponent,
+    ConclusionComponent,
+    DismissalComponent,
+    PPEUniformComponent
   ],
   imports: [
     BrowserModule,
@@ -36,11 +58,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 		MatProgressSpinnerModule,
 		ReactiveFormsModule,
 		FormsModule,
-		MatSnackBarModule
+		MatSnackBarModule,
+    MatSelectModule,
+    MatRadioModule,
   ],
   providers: [
 		{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-		{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true },
+    { provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'primary' },},
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
 	],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>""</title>
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <section>
+        <header class="centralizar">
+            <div>
+                <h2>AUTORIZAÇÃO DE USO DE IMAGEM E SOM</h2>
+                <br/>
+            </div>
+        </header>
+        <div>
+            <p>Eu {{studentData?.nome}}, portador da Carteira de 
+                Identidade/RG {{studentData?.rg}} e inscrito no CPF/MF sob nº {{studentData?.cpf}} cedo 
+                o direito de uso de minha imagem e/ou som de minha voz à 
+                Universidade Católica de Santos para produção de material de 
+                divulgação da instituição.</p>
+            <p>A presente autorização abrange o uso acima indicado tanto em mídia 
+                impressa, eletrônica, Internet e demais meios de comunicação, para 
+                apresentação institucional em feiras, eventos acadêmicos, cursos e 
+                quaisquer outros meios de reprodução e comercialização, sem qualquer 
+                ônus ao efetivo registro.</p>
+            <p>O material que venha a ser produzido poderá ser utilizado 
+                em qualquer idioma, por tempo indeterminado, em território
+                nacional e no exterior, e em qualquer das ações com ou sem
+                finalidade lucrativa, pertencentes à Universidade Católica
+                de Santos.</p>
+            <p>E, por estar de acordo com os termos e condições descritos 
+                acima, assino a presente autorização.</p>  
+            <br>
+        </div>
+        <div class = "centralizar">
+            <h4>Santos {{today | date:"longDate"}}</h4>
+            <p>__________________________</p>
+            <p>{{studentData?.nome}}<br></p>
+            <br>
+        </div>
+        <div>
+            <p>Tel. para contato: ________________________</p>
+            <p>E-mail: _________________________________________</p>
+            <br>
+        </div>
+        <div class="centralizar">
+            <p><b>Setor de Marketing de Conteúdo</b><br>
+                Campus Dom Idílio José Soares: Av. Conselheiro Nébias, 300, Santos<br>
+                Prédio Administrativo, sala 101<br>
+            Tel.: (13) 3205-5555 - ramal 1342</p>
+        </div>
+    </section>
+</body>
+</html>

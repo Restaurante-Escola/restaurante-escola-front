@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>""</title>
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <section>
+        <header class="centralizar">
+            <div>
+                <h1>CONTROLE DE RECEBIMENTO DE E.P.I.</h1>
+                <br/>
+            </div>
+        </header>
+        <div>
+            <br>
+            <p>Eu,{{studentData?.nome}},</p>
+            <p>declaro que recebi o Equipamento de Proteção Individual 
+                descrito abaixo, seguindo a norma regulamentadora NR 6 e 
+                estou ciente dos cuidados para a boa preservação dos mesmos.</p>
+            <br/>
+            <table cellspacing ="0" cellpadding="3" border = "1">
+                <tr>
+                    <td width="300px" ><b>E.P.I.</b></td>
+                    <td width="200px" class="centralizar"><b>C.A.</b></td>
+                    <td width="357px" class="centralizar"><b>ASSINATURA</b></td>
+                </tr>
+                <tr>
+                    <td>Par de sapatos de segurança</td>
+                    <td class="centralizar">39848</td>
+                    <td rowspan="2" height = "90px"></td>
+                </tr>
+                <tr>
+                    <td>Máscara KN95</td>
+                    <td class="centralizar">36856</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <br>
+            <h1 class="centralizar">CONTROLE DE RECEBIMENTO DE UNIFORME E MATERIAL 
+                TURMA XVII</h1>
+            <p>Declaro ter recebido os itens na quantidade referente ao uniforme 
+                e ao material descritos a seguir:</p>
+            <table cellspacing ="0" cellpadding="3" border = "1">
+                <tr>
+                    <td width="350px"><b>UNIFORME</b></td>
+                    <td width="507px" class="centralizar"><b>ASSINATURA</b></td>
+                </tr>
+                <tr>
+                    <td>1 - Bandana<br> 
+                        1 - Avental<br> 
+                        1 - Camiseta Preta <br> 
+                        1 - Camiseta Amarela<br> 
+                        1 – Crachá</td>
+                    <td rowspan="1"></td>
+                </tr>
+                <tr>
+                    <td><b>MATERIAL</b></td>
+                    <td class="centralizar"><b>ASSINATURA</b></td>
+                </tr>
+                <tr>
+                    <td>1 - Apostila do curso<br> 
+                        1 - Cópia do cardápio<br> 
+                        1 - Caderno<br> 
+                        1 - Caneta<br> 
+                        1 - Lápiz<br> 
+                        1 - Borracha<br> 
+                        1 - Apontador<br> 
+                        1 - Kit Higiene bucal</td>
+                    <td rowspan="1"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="centralizar">
+            <br>
+            <p>Santos {{today | date:"longDate"}}</p>
+        </div>
+    </section>
+</body>
+</html>

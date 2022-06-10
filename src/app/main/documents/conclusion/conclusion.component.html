@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>""</title>
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <section>
+        <header class="centralizar">
+            <div>
+                <h1>DECLARAÇÃO</h1>
+                <br/>
+            </div>
+        </header>
+        <div>
+            <br>
+            <p>Declaramos que {{studentData?.nome}}, CONCLUIU o curso de 
+                Organização em Alimentos e Bebidas do Restaurante-Escola <!-- TO DO:  -->
+                Estação Bistrô com experiências em cozinha quente e fria, 
+                confeitaria, bar e atendimento ao cliente (salão), aulas 
+                teóricas e práticas. Iniciado em {{classData?.inicioTurma | date: "longDate"}} a {{classData?.fimTurma | date: "longDate"}} , 
+                com a carga horária de 1.546 horas.</p>
+            <br/>
+        </div>
+        <div class="centralizar">
+            <h3>Santos {{today | date:"longDate"}}</h3>
+            <br>
+            <p>______________________________</p>
+            <p><b>Anderson Santana</b></p>
+            <p><b>Coordenador</b></p>
+            <br>
+            <h5>Restaurante-Escola – Estação Bistrô</h5>
+            <h5><b>Pça Marques de Monte Alegre s/n – Valongo – Santos, SP</b></h5>
+        </div>
+    </section>
+</body>
+</html>

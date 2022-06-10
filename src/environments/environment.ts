@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-	api_url: 'http://restauranteescolaapi-env.eba-cyze4etr.us-east-2.elasticbeanstalk.com:8080'
+	api_url: 'http://localhost:8080'
 };
 
 /*

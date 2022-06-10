@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>""</title>
+    <meta charset="utf-8">
+</head>
+<body class="body">
+    <section>
+        <header class="centralizar">
+            <div>
+                <h1>TERMO DE DESLIGAMENTO</h1>
+            </div>
+        </header>
+        <div>
+            <br>
+            <h3>Santos {{today | date:"longDate"}}</h3>
+            <p>Através deste termo, informamos que o (a) aluno (a) 
+                {{studentData?.nome}} está DESLIGADO (a) do projeto a 
+                partir desta data pelo(s) seguinte(s) motivo(s):</p>
+            <br/>
+            <table cellspacing ="0" cellpadding="3" border = "1">
+                <tr>
+                    <td width="920px" height = "110px"><b> <p  class="centralizar" *ngFor="let advertence of studentAdvertences">{{advertence?.descricao}}</p></b></td> <!-- Falta implmentar, por enquanto esta trazendo advertencias-->
+                </tr>
+            </table>
+            <br>
+            <p>O Uniforme (camiseta preta, amarela e avental) deverá ser devolvido.</p>
+            <br>
+        </div>
+        <div class="centralizar">
+            <p>______________________________</p>
+            <p><b>{{studentData?.nome}}</b></p>
+            <p><b>Aluno</b></p>
+            <br>
+            <p>______________________________</p>
+            <p><b>Instrutor (a) – Restaurante-Escola</b></p>
+            <br>
+            <p>______________________________</p>
+            <p><b>José Monteiro Leite Júnior</b></p>
+            <p><b>Chef de Cozinha - Restaurante-escola</b></p>
+            <br>
+            <p>______________________________</p>
+            <p><b>Anderson Santana </b></p>
+            <p><b>Coordenador</b></p>
+            <br>
+            <h5>Restaurante-Escola – Estação Bistrô</h5>
+            <h5>Pça Marques de Monte Alegre s/n – Valongo – Santos, SP</h5>
+        </div>
+    </section>
+</body>
+</html>
