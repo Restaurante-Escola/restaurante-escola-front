@@ -38,7 +38,7 @@ export class ClassListComponent implements OnInit {
 		this.dataSource = new MatTableDataSource(this.class);
 		this.displayedColumns = ['icon', 'name', 'date'];
 		this.loading = false;
-  }
+  	}
 
 	async createClass(){
 		const dialogRef = this.dialog.open(EditCreateClassComponent, {
