@@ -4,15 +4,35 @@
     <title>""</title>
     <meta charset="utf-8">
 </head>
+
+<header>
+    <div class="row">
+        <div class="esquerda">
+          <img src="./assets/unisantos.png" alt="unisantos" style="width:70%">
+        </div>
+        <div class="centro">
+          <img src="./assets/restaurante.png" alt="restaurante_escola"style="width:45%">
+        </div>
+        <div class="direita">
+          <img src="./assets/prefeitura_santos.png" alt="prefeitura_santos"style="width:70%">
+        </div>
+    </div>
+</header>
+
+<br>
+<br>
+<br>
+<br>
+
 <body class="body">
 
     <section>
-        <header class="centralizar">
+        <div class="centralizar">
             <div>
                 <h2>DECLARAÇÃO DE ADVERTÊNCIA</h2>
                 <br/>
             </div>
-        </header>
+        </div>
         <div>
             <h3>Santos {{today | date:"longDate"}}</h3>
             <br>
@@ -25,6 +45,8 @@
                 curso vigente.</p>  
             <br>
         </div>
+
+        <br>
         <div class="centralizar">
             <p>______________________________</p>
             <p>{{studentData?.nome}}</p>
