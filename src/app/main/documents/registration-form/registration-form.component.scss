@@ -1,9 +1,199 @@
-body{
-    width: 960px;
-    margin: auto;
-    font: normal 20px Arial;
+* {
+    background-color: white;
+    padding-left: 1px;
+}
+.esquerda {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+    padding-left: 12%;
+    padding-top: 60px;
 }
 
-.centralizar{
-    text-align: center;
+.centro {
+    float: center;
+    width: 33.33%;
+    padding: 5px;
+    padding-left: 12%;
 }
+
+.direita {
+    float: right;
+    width: 33.33%;
+    padding: 5px;
+    padding-left: 10%;
+    padding-top: 40px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+h1 {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+h2, h3, h4 {
+    font-weight: bold;
+    font-size: 22px;
+    background-color: rgba(233, 233, 12, 0.623);
+    color: rgb(32, 31, 31);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+
+.dados_pessoais {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .dados_pessoais> div {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .dados_pessoais_tel {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .dados_pessoais_tel > div {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .dados_pessoais_email {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .dados_pessoais_email > div {
+    text-align: left;
+    font-size: 20px;
+  }
+.escolaridade {
+    gap: 10px;
+    padding: 10px;
+}
+.escolaridade > div {
+    text-align: left;
+    font-size: 20px;
+}
+  .escolaridade_escola {
+    display: grid;
+    grid-template-columns: auto ;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .escolaridade_escola > div {
+    text-align: left;
+    font-size: 20px;
+  }
+  .escolaridade_escola_medio {
+    display: grid;
+    grid-template-columns: auto ;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .escolaridade_escola_medio > div {
+    text-align: left;
+    font-size: 20px;
+  }
+  .cuidados {
+    gap: 10px;
+    padding: 10px;
+  }
+  .cuidados > div {
+        text-align: left;
+        font-size: 20px;
+}
+
+.tecnico {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .tecnico > div {
+    text-align: left;
+    font-size: 20px;
+  }
+
+ p{
+    font-size: 20px;
+    padding-left: 10px;
+ }
+
+  .alergia {
+    display: grid;
+    grid-template-columns: auto ;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .alergia > div {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .hipertensao {
+    margin-bottom: 0.5rem;
+  }
+
+  .hipotensao {
+    margin-bottom: 0.5rem;
+  }
+
+  .epilepsia {
+    margin-bottom: 0.5rem;
+  }
+
+  .diabetes {
+    margin-bottom: 0.5rem;
+  }
+
+  .prob_ocular {
+    margin-bottom: 0.5rem;
+  }
+
+  .prob_respiratorio {
+    margin-bottom: 0.5rem;
+  }
+
+  .fuma {
+    margin-bottom: 0.5rem;
+  }
+
+  .psiquiatrica {
+    margin-bottom: 0.5rem;
+  }
+  
+  .medicamentos {
+    margin-bottom: 0.5rem;
+  }
+   .medicamentos_medicacao {
+    margin-bottom: 0.5rem;
+    display: grid;
+    grid-template-columns: auto ;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .medicamentos_medicacao> div {
+    text-align: left;
+    font-size: 20px;
+  }

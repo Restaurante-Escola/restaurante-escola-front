@@ -1,2 +1,181 @@
-<p>HTML ainda em desenvolvimento</p>
-<!-- TO DO: html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>FICHA CADASTRAL</title>
+        <link rel="stylesheet" href="registration-form.component.scss">
+	</head>
+
+
+<header>
+    <div class="row">
+        <div class="esquerda">
+          <img src="./assets/unisantos.png" alt="unisantos" style="width:50%">
+        </div>
+        <div class="centro">
+          <img src="./assets/restaurante.png" alt="restaurante_escola"style="width:30%">
+        </div>
+        <div class="direita">
+          <img src="./assets/prefeitura_santos.png" alt="prefeitura_santos"style="width:50%">
+        </div>
+    </div>
+</header>
+
+<body>
+    <h1>Cadastro de Alunos - Turma XVII</h1>
+    <h2>Dados Pessoais:</h2>
+    <div class="dados_pessoais">
+        <div><label> Nome: {{studentData?.nome}}</label></div>
+        <div><label> Idade: {{studentData?.idade}} </label></div>
+        <div><label> Nome Social: {{studentData?.nomeSocial}} </label></div>
+        <div><label> Data de Nascimento: {{studentData?.dataNascimento}} </label></div>
+        <div><label> Estado Civil: {{studentData?.estadoCivil}} </label></div>
+        <div><label> CPF: {{studentData?.cpf}} </label></div>
+        <div><label> RG: {{studentData?.rg}} </label></div>
+        <div><label> Endereço: {{studentData?.endereco}} </label></div>
+    </div>
+    <div class="dados_pessoais_tel">
+        <div><label> Telefone: {{studentData?.telefoneCelular}}</label></div>
+        <div><label> Whatsapp: {{studentData?.numeroWhatsapp}}</label></div>
+        <div><label> Recado: {{studentData?.nomePessoaTelefoneRecado}} - {{studentData?.telefoneRecado}}</label></div>
+    </div>
+    <div class="dados_pessoais_email">
+        <div><label> E-mail: {{studentData?.email}} </label></div>
+        <div><label> Camiseta: {{studentData?.camiseta}} </label></div>
+        <div><label> Nº Calçado: {{studentData?.sapato}} </label></div>
+    </div>
+    <div class="escolaridade">
+        <h3>Escolaridade:</h3>
+        <br>
+        <div >
+          <label> Escolaridade: {{studentData?.escolaridade}}</label>
+          <br>
+        </div>
+        
+    </div>
+    <div class="escolaridade_escola">
+        <div><label> Escola: {{studentData?.escola}}</label></div>
+    </div>
+    <div class="cuidados">
+        <h4>Cuidados:</h4>
+        <div>
+    <label for="cuidados">Serviço de Atendimento: {{studentData?.servicoAtendimento}}</label>
+        </div>
+    </div>
+    <div class="tecnico">
+        <div><label> Unidade: {{studentData?.unidade}}</label></div>
+        <div><label> Nome do técnico: {{studentData?.tecnico}}</label></div>
+       <div><label> Telefone: {{studentData?.telefoneTecnico}} </label></div>
+    </div>
+    <label><p>Apresenta algum tipo de alergia?</p> </label>
+    <div class="cuidados">
+      <div *ngIf="studentData?.alergia == true">
+    <label for="cuidados">Sim ( X )</label> 
+    <label for="cuidados">Não ( )</label> 
+      </div>
+      <div *ngIf="studentData?.alergia == false">
+    <label for="cuidados">Sim ( )</label> 
+    <label for="cuidados">Não ( X )</label> 
+      </div>
+    </div>
+    <div class="alergia">
+      <div *ngIf="studentData?.alergia == true"><label> Especifique: {{studentData?.especificacaoAlergia}}</label></div>
+    </div>
+    <div class="cuidados">
+                <div class="hipertensao" *ngIf="studentData?.hipertensao == true">
+                <form>
+                      <label>Hipertensão (pressão alta)? Sim ( X )</label>
+                      <label>Não ( )</label>
+                </form>
+                </div>
+                <div class="hipertensao" *ngIf="studentData?.hipertensao == false">
+                  <form>
+                      <label>Hipertensão (pressão alta)? Sim ( )</label>
+                      <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="hipotensao" *ngIf="studentData?.hipotensao == true">
+                <form>
+                      <label>Hipotensão (pressão baixa)? Sim ( X )</label>
+                      <label>Não ( )</label>
+                </form>
+                </div>
+                <div class="hipotensao" *ngIf="studentData?.hipotensao == false">
+                  <form>
+                       <label>Hipotensão (pressão baixa)? Sim ( )</label>
+                       <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="epilepsia" *ngIf="studentData?.epilepsia == true">
+                    <form>
+                      <label>Epilepsia(convulsão)? Sim ( X )</label>
+                      <label>Não ( )</label>
+                    </form>
+                </div>
+                <div class="epilepsia" *ngIf="studentData?.epilepsia == false">
+                  <form>
+                    <label>Epilepsia (convulsão)? Sim ( )</label>
+                    <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="diabetes" *ngIf="studentData?.diabetes == true">
+                    <form>
+                      <label>Diabetes? Sim ( X )</label>
+                      <label>Não ( )</label>
+                    </form>
+                </div>
+                <div class="diabetes" *ngIf="studentData?.diabetes == false">
+                  <form>
+                    <label>Diabetes? Sim ( )</label>
+                    <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="prob_ocular" *ngIf="studentData?.problemaOcular == true">
+                    <form>
+                      <label>Problema ocular? Sim ( X )</label>
+                      <label>Não ( )</label>
+                    </form>
+                </div>
+                <div class="prob_ocular" *ngIf="studentData?.problemaOcular == false">
+                  <form>
+                    <label>Problema ocular? Sim ( )</label>
+                    <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="prob_respiratorio" *ngIf="studentData?.problemaRespiratorio == true">
+                    <form>
+                      <label>Problema Respiratório? Sim ( X )</label>
+                      <label>Não ( )</label>
+                    </form>
+                </div>
+                <div class="prob_respiratorio" *ngIf="studentData?.problemaRespiratorio == false">
+                  <form>
+                    <label>Problema Respiratório? Sim ( )</label>
+                    <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="fuma" *ngIf="studentData?.fumante == true">
+                    <form>
+                      <label>Fuma? Sim ( X )</label>
+                      <label>Não ( )</label>
+                    </form>
+                </div>
+                <div class="fuma" *ngIf="studentData?.fumante == false">
+                  <form>
+                    <label>Fuma? Sim ( )</label>
+                    <label>Não ( X )</label>
+                  </form>
+                </div>
+                <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo == ' ' ">
+                    <form>
+                      <label>Faz uso de medicamentos de uso continuo? Sim ( X )</label>
+                      <label> Não ( )</label>
+                    </form>
+                    <div class="medicamentos_especificacao">
+                      <div><label> Nome das medicações: {{studentData?.medicamentosUsoContinuo}}</label></div>
+                    </div>
+                </div>
+      </div>
+</body>
+</html>
