@@ -23,28 +23,38 @@
 </header>
 
 <body>
-    <h1>Cadastro de Alunos - Turma XVII</h1>
-    <h2>Dados Pessoais:</h2>
-    <div class="dados_pessoais">
-        <div><label> Nome: {{studentData?.nome}}</label></div>
-        <div><label> Idade: {{studentData?.idade}} </label></div>
-        <div><label> Nome Social: {{studentData?.nomeSocial}} </label></div>
-        <div><label> Data de Nascimento: {{studentData?.dataNascimento}} </label></div>
-        <div><label> Estado Civil: {{studentData?.estadoCivil}} </label></div>
-        <div><label> CPF: {{studentData?.cpf}} </label></div>
-        <div><label> RG: {{studentData?.rg}} </label></div>
-        <div><label> Endereço: {{studentData?.endereco}} </label></div>
-    </div>
-    <div class="dados_pessoais_tel">
-        <div><label> Telefone: {{studentData?.telefoneCelular}}</label></div>
-        <div><label> Whatsapp: {{studentData?.numeroWhatsapp}}</label></div>
-        <div><label> Recado: {{studentData?.nomePessoaTelefoneRecado}} - {{studentData?.telefoneRecado}}</label></div>
-    </div>
-    <div class="dados_pessoais_email">
-        <div><label> E-mail: {{studentData?.email}} </label></div>
-        <div><label> Camiseta: {{studentData?.camiseta}} </label></div>
-        <div><label> Nº Calçado: {{studentData?.sapato}} </label></div>
-    </div>
+  <h1>Cadastro de Alunos - Turma XVII</h1>
+  <h2>Dados Pessoais:</h2>
+  <div class="dados_pessoais">
+      <div><label> Nome: {{studentData?.nome}}</label></div>
+      <div><label> Idade: {{studentData?.idade}} </label></div>
+      <div><label> Nome Social: {{studentData?.nomeSocial}} </label></div>
+      <div><label> Data de Nascimento: {{studentData?.dataNascimento}} </label></div>
+      <div><label> Estado Civil: {{studentData?.estadoCivil}} </label></div>
+      <div><label> CPF: {{studentData?.cpf}} </label></div>
+      <div><label> RG: {{studentData?.rg}} </label></div>
+      <div><label> Endereço: {{studentData?.endereco}} </label></div>
+  </div>
+  <div class="dados_pessoais_tel">
+      <div><label> Telefone: {{studentData?.telefoneCelular}}</label></div>
+      <div class="telefone">
+      <div><label> Whatsapp: {{studentData?.numeroWhatsapp}}</label></div>
+      </div>
+      <div class="recado">
+      <div><label> Recado: {{studentData?.nomePessoaTelefoneRecado}} - {{studentData?.telefoneRecado}}</label></div>
+      </div>
+  </div>
+  <div class="dados_pessoais_email">
+      <div class="email">
+      <div><label> E-mail: {{studentData?.email}} </label></div>
+      </div>
+      <div class="camiseta">
+      <div><label> Camiseta: {{studentData?.camiseta}} </label></div>
+      </div>
+      <div class="calcado">
+      <div><label> Nº Calçado: {{studentData?.sapato}} </label></div>
+      </div>
+  </div>
     <div class="escolaridade">
         <h3>Escolaridade:</h3>
         <br>
@@ -169,13 +179,28 @@
                 </div>
                 <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo == ' ' ">
                     <form>
-                      <label>Faz uso de medicamentos de uso continuo? Sim ( X )</label>
-                      <label> Não ( )</label>
+                      <label>Faz uso de medicamentos de uso continuo? Sim ( )</label>
+                      <label> Não ( X )</label>
                     </form>
-                    <div class="medicamentos_especificacao">
-                      <div><label> Nome das medicações: {{studentData?.medicamentosUsoContinuo}}</label></div>
-                    </div>
                 </div>
+                <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo != ' ' ">
+                  <form>
+                    <label>Faz uso de medicamentos de uso continuo? Sim ( X )</label>
+                    <label> Não ( )</label>
+                  </form>
+                  <div class="medicamentos_especificacao">
+                    <div><label> Nome das medicações: {{studentData?.medicamentosUsoContinuo}}</label></div>
+                  </div>
+              </div>
+              <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo == ' ' ">
+                <form>
+                  <label>Faz uso de medicamentos de uso continuo? Sim ( )</label>
+                  <label> Não ( X )</label>
+                </form>
+                <div class="medicamentos_especificacao">
+                  <div><label> Nome das medicações: {{studentData?.medicamentosUsoContinuo}}</label></div>
+                </div>
+            </div>
       </div>
 </body>
 </html>
