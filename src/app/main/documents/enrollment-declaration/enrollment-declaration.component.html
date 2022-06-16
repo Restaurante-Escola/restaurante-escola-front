@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>""</title>
+    <title>DECLARACÃO DE MATRICULA</title>
     <meta charset="utf-8">
 </head>
-<body class="body">
-    <section>
-        <header class="centralizar">
-            <div>
+
+        <header>
+            <div class="row">
+                <div class="esquerda">
+                  <img src="./assets/unisantos.png" alt="unisantos" style="width:70%">
+                </div>
+                <div class="centro">
+                  <img src="./assets/restaurante.png" alt="restaurante_escola"style="width:45%">
+                </div>
+                <div class="direita">
+                  <img src="./assets/prefeitura_santos.png" alt="prefeitura_santos"style="width:70%">
+                </div>
+            </div>
+        </header>
+
+        <body class="body">
+            <div class="centralizar">
                 <h1>DECLARAÇÃO</h1>
                 <br/>
             </div>
-        </header>
+            <section>
         <div>
             <br>
             <p>Declaramos que {{studentData?.nome}} está em período de formação no curso 
@@ -19,8 +32,7 @@
                 Estação Bistrô com experiências em cozinha quente e fria, 
                 confeitaria, bar e atendimento ao cliente (salão), aulas 
                 teóricas e práticas. Iniciado em {{classData?.inicioTurma | date: "longDate"}} com previsão de 
-                término em {{classData?.fimTurma | date: "longDate"}} , com a carga horária de 1.546 horas, 
-                de terça a sábado das 8h às 17h.</p>
+                término em {{classData?.fimTurma | date: "longDate"}}.</p>
             <br/>
         </div>
         <div class="centralizar">

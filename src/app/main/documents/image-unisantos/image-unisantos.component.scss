@@ -1,3 +1,8 @@
+* {
+    background-color: white;
+    padding-left: 1px;
+}
+
 body{
     width: 960px;
     margin: auto;
@@ -7,3 +12,32 @@ body{
 .centralizar{
     text-align: center;
 }
+
+.esquerda {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+    padding-left: 12%;
+    padding-top: 60px;
+}
+
+.centro {
+    float: center;
+    width: 33.33%;
+    padding: 5px;
+    padding-left: 12%;
+}
+
+.direita {
+    float: right;
+    width: 33.33%;
+    padding: 5px;
+    padding-left: 10%;
+    padding-top: 40px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
