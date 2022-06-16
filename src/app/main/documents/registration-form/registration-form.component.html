@@ -183,7 +183,7 @@
                       <label> Não ( X )</label>
                     </form>
                 </div>
-                <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo != ' ' ">
+                <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo != '' ">
                   <form>
                     <label>Faz uso de medicamentos de uso continuo? Sim ( X )</label>
                     <label> Não ( )</label>
@@ -192,7 +192,7 @@
                     <div><label> Nome das medicações: {{studentData?.medicamentosUsoContinuo}}</label></div>
                   </div>
               </div>
-              <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo == ' ' ">
+              <div class="medicamento" *ngIf="studentData?.medicamentosUsoContinuo == '' ">
                 <form>
                   <label>Faz uso de medicamentos de uso continuo? Sim ( )</label>
                   <label> Não ( X )</label>
